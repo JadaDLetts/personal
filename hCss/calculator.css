@@ -1,0 +1,29 @@
+body{
+    margin: 30px 50px 30px 50px;
+}
+h1, h3, h2{
+    text-align: center;
+}
+select{
+    width: 100px;
+    height: 30px;
+    font-size: 14pt;
+}
+table {
+    margin: auto;
+}
+
+.calc-btn {
+    width: 100px
+}
+.calc-display {
+    width: 400px;
+    cursor: not-allowed;
+}
+
+.fact-btn, .space {
+    width: 100px
+}
+.fact-display {
+    width: 300px
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photography Slideshow</title>
+
+    <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="hCss/photo.css">
+</head>
+<body>
+<h1>Photography Project SlideShow</h1>
+<div class="slideshow">
+    <div class="mySlides ">
+        <div class="numbertext">1 / 10</div>
+        <img src="pics/1.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">2 / 10</div>
+        <img src="pics/2.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">3 / 10</div>
+        <img src="pics/3.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">4 / 10</div>
+        <img src="pics/4.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">5 / 10</div>
+        <img src="pics/5.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">6 / 10</div>
+        <img src="pics/6.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">7 / 10</div>
+        <img src="pics/7.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">8 / 10</div>
+        <img src="pics/8.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">9 / 10</div>
+        <img src="pics/9.jpg">
+    </div>
+
+    <div class="mySlides ">
+        <div class="numbertext">10 / 10</div>
+        <img src="pics/10.jpg">
+    </div>
+
+    <a class=" btn prev" onclick="nextSlide(-1)">&#10094;</a>
+    <a class="btn nxt" onclick="nextSlide(1)">&#10095;</a>
+</div>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
+    <span class="dot" onclick="currentSlide(9)"></span>
+    <span class="dot" onclick="currentSlide(10)"></span>
+</div>
+
+<script>
+    let sIndex = 1;
+    showSlide(sIndex);
+
+    function currentSlide(int){
+        sIndex = int;
+        showSlide(sIndex);
+    }
+
+    function showSlide(int){
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if(int > slides.length){ sIndex = 1;}
+        if (int < 1) {sIndex = slides.length;}
+
+        for(i=0; i < slides.length; i++){
+            slides[i].style.display = "none";
+        }
+
+        for(i = 0; i < dots.length; i++){
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        dots[sIndex-1].className+=" active";
+        slides[sIndex-1].style.display = "block";
+    }
+
+    function nextSlide(int){
+        showSlide(sIndex+=int);
+    }
+
+
+
+</script>
+</body>
+</html>

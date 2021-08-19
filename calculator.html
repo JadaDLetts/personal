@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="hCss/calculator.css">
+</head>
+<body>
+
+<br>
+<a class="l-arrow btn btn-dark" href="index.html">
+    <i class="fa fa-arrow-left"></i>
+</a>
+
+<h1 class="col">Calculator</h1>
+<br>
+<br>
+
+<form name="calculator">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="4">
+                <input class="calc-display" type="text" name="display" id="display" disabled>
+            </th>
+        </tr>
+        </thead>
+    </table>
+    <br>
+    <table>
+        <tbody>
+        <tr>
+            <td><input class="calc-btn" type="button" value="1" onclick="calculator.display.value+=1"></td>
+            <td><input class="calc-btn" type="button" value="2" onclick="calculator.display.value+=2"></td>
+            <td><input class="calc-btn" type="button" value="3" onclick="calculator.display.value+=3"></td>
+            <td><input class="calc-btn" type="button" value="+" onclick="calculator.display.value+='+'"></td>
+
+        </tr>
+        <tr>
+            <td><input class="calc-btn" type="button" value="4" onclick="calculator.display.value+=4"></td>
+            <td><input class="calc-btn" type="button" value="5" onclick="calculator.display.value+=5"></td>
+            <td><input class="calc-btn" type="button" value="6" onclick="calculator.display.value+=6"></td>
+            <td><input class="calc-btn" type="button" value="-" onclick="calculator.display.value+='-'"></td>
+
+        </tr>
+        <tr>
+            <td><input class="calc-btn" type="button" value="7" onclick="calculator.display.value+=7"></td>
+            <td><input class="calc-btn" type="button" value="8" onclick="calculator.display.value+=8"></td>
+            <td><input class="calc-btn" type="button" value="9" onclick="calculator.display.value+=9"></td>
+            <td><input class="calc-btn" type="button" value="*" onclick="calculator.display.value+='*'"></td>
+        </tr>
+
+        <tr>
+            <td><input class="calc-btn" type="button" value="c" onclick="calculator.display.value=''"></td>
+            <td><input class="calc-btn" type="button" value="0" onclick="calculator.display.value+=0"></td>
+            <td><input class="calc-btn" type="button" value="="
+                       onclick="calculator.display.value=calculate(calculator.display.value)"></td>
+            <td><input class="calc-btn" type="button" value="/" onclick="calculator.display.value+='/'"></td>
+        </tr>
+
+        <tr>
+            <td><input class="calc-btn" type="button" value="." onclick="calculator.display.value+='.'"></td>
+            <td><input class="calc-btn" type="button" value="^" onclick="calculator.display.value+='^'"></td>
+            <td><input class="calc-btn" type="button" value="!" onclick="calculator.display.value+='!'"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+    <br>
+
+</form>
+<h2>Calculate Factorial</h2>
+<br>
+
+<form name="factorial">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input class="fact-display" type="number" name="display" id="display">
+            </th>
+        </tr>
+        </thead>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <input class="fact-btn" type="button"
+                       onclick="factorial.display.value = calculateFactoral(factorial.display.value)" value="calculate">
+            </td>
+            <td class="space"></td>
+            <td>
+                <input class="fact-btn" type="button" onclick="factorial.display.value = ''" value="clear">
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+    function calculateFactoral(input) {
+        let result = 1;
+
+        if (input > 0) {
+            for (let i = input; i > 0; i--) {
+                result *= i;
+            }
+        } else if (input < 0) {
+            for (let i = input; i < 0; i++) {
+                result *= i;
+            }
+
+            if (result > 0) {
+                result *= (-1);
+            }
+        }
+        return result;
+    }
+
+    function calculate(s) {
+        // --- Parse a calculation string into an array of numbers and operators
+        var calculation = [],
+            current = '';
+        for (var i = 0, ch; ch = s.charAt(i); i++) {
+            if ('^*/+-'.indexOf(ch) > -1) {
+                if (current === '' && ch === '-') {
+                    current = '-';
+                    console.log('\n1: ' + current);
+                } else {
+                    calculation.push(parseFloat(current), ch);
+                    console.log('\n2: ' + current);
+                    current = '';
+                }
+            } else {
+                current += s.charAt(i);
+            }
+        }
+        if (current !== '') {
+            calculation.push(parseFloat(current));
+            console.log('\n3: ' + current);
+        }
+        return calculateHelp(calculation);
+    }
+
+    function calculateHelp(calc) {
+        // --- Perform a calculation expressed as an array of operators and numbers
+        var ops = [{'^': (a, b) => Math.pow(a, b)},
+                {'*': (a, b) => a * b, '/': (a, b) => a / b},
+                {'+': (a, b) => a + b, '-': (a, b) => a - b},
+                {'!': (a, b) => a * a}],
+            newCalc = [],
+            currentOp;
+        for (var i = 0; i < ops.length; i++) {
+            for (var j = 0; j < calc.length; j++) {
+                if (ops[i][calc[j]]) {
+                    currentOp = ops[i][calc[j]];
+                } else if (currentOp) {
+                    newCalc[newCalc.length - 1] =
+                        currentOp(newCalc[newCalc.length - 1], calc[j]);
+                    currentOp = null;
+                } else {
+                    newCalc.push(calc[j]);
+                }
+                console.log(newCalc);
+            }
+            calc = newCalc;
+            newCalc = [];
+        }
+        if (calc.length > 1) {
+            console.log('Error: unable to resolve calculation');
+            return calc;
+        } else {
+            return calc[0];
+        }
+    }
+</script>
+
+
+</body>
+</html>
