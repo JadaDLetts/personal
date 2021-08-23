@@ -1,8 +1,17 @@
-.btn:hover{
-    background-color: white;
-    color: black;
+.btn:hover {
+    background-color: grey;
 }
 
-body{
+.btn {
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+body {
     margin: 30px 50px 30px 50px;
 }
