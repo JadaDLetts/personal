@@ -1,14 +1,17 @@
-body{
+body {
     margin: 30px 50px 30px 50px;
 }
-h1, h3, h2{
+
+h1, h3, h2 {
     text-align: center;
 }
-select{
+
+select {
     width: 100px;
     height: 30px;
     font-size: 14pt;
 }
+
 table {
     margin: auto;
 }
@@ -16,14 +19,24 @@ table {
 .calc-btn {
     width: 100px
 }
-.calc-display {
-    width: 400px;
-    cursor: not-allowed;
-}
+
 
 .fact-btn, .space {
     width: 100px
 }
+
 .fact-display {
     width: 300px
+}
+
+.calc-form {
+    background-color: black;
+    width: 500px;
+    margin: auto;
+}
+
+.calc-display {
+    width: 400px;
+    cursor: not-allowed;
+    background-color: white;
 }

@@ -1,184 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Calculator</title>
-    <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="hCss/calculator.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+        <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="hCss/calculator.css">
+    </head>
+    <body>
 
-<br>
-<a class="l-arrow btn btn-dark" href="index.html">
-    <i class="fa fa-arrow-left"></i>
-</a>
+        <br>
+        <a class="l-arrow btn btn-dark" href="index.html">
+            <i class="fa fa-arrow-left"></i>
+        </a>
 
-<h1 class="col">Calculator</h1>
-<br>
-<br>
-
-<form name="calculator">
-    <table>
-        <thead>
-        <tr>
-            <th colspan="4">
-                <input class="calc-display" type="text" name="display" id="display" disabled>
-            </th>
-        </tr>
-        </thead>
-    </table>
-    <br>
-    <table>
-        <tbody>
-        <tr>
-            <td><input class="calc-btn" type="button" value="1" onclick="calculator.display.value+=1"></td>
-            <td><input class="calc-btn" type="button" value="2" onclick="calculator.display.value+=2"></td>
-            <td><input class="calc-btn" type="button" value="3" onclick="calculator.display.value+=3"></td>
-            <td><input class="calc-btn" type="button" value="+" onclick="calculator.display.value+='+'"></td>
-
-        </tr>
-        <tr>
-            <td><input class="calc-btn" type="button" value="4" onclick="calculator.display.value+=4"></td>
-            <td><input class="calc-btn" type="button" value="5" onclick="calculator.display.value+=5"></td>
-            <td><input class="calc-btn" type="button" value="6" onclick="calculator.display.value+=6"></td>
-            <td><input class="calc-btn" type="button" value="-" onclick="calculator.display.value+='-'"></td>
-
-        </tr>
-        <tr>
-            <td><input class="calc-btn" type="button" value="7" onclick="calculator.display.value+=7"></td>
-            <td><input class="calc-btn" type="button" value="8" onclick="calculator.display.value+=8"></td>
-            <td><input class="calc-btn" type="button" value="9" onclick="calculator.display.value+=9"></td>
-            <td><input class="calc-btn" type="button" value="*" onclick="calculator.display.value+='*'"></td>
-        </tr>
-
-        <tr>
-            <td><input class="calc-btn" type="button" value="c" onclick="calculator.display.value=''"></td>
-            <td><input class="calc-btn" type="button" value="0" onclick="calculator.display.value+=0"></td>
-            <td><input class="calc-btn" type="button" value="="
-                       onclick="calculator.display.value=calculate(calculator.display.value)"></td>
-            <td><input class="calc-btn" type="button" value="/" onclick="calculator.display.value+='/'"></td>
-        </tr>
-
-        <tr>
-            <td><input class="calc-btn" type="button" value="." onclick="calculator.display.value+='.'"></td>
-            <td><input class="calc-btn" type="button" value="^" onclick="calculator.display.value+='^'"></td>
-            <td><input class="calc-btn" type="button" value="!" onclick="calculator.display.value+='!'"></td>
-        </tr>
-        </tbody>
-    </table>
+        <h1 class="col">Calculator</h1>
+        <br>
 
 
-    <br>
-    <br>
-    <br>
+        <form name="calculator" class="calc-form">
+            <br>
+            <table class="calc-table-head">
+                <thead>
+                    <tr>
+                        <th colspan="4">
+                            <label for="display">
+                                <input class="calc-display" type="text"
+                                       name="display" id="display"/>
+                            </label>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            <table class="calc-table">
+                <tbody>
 
-</form>
-<h2>Calculate Factorial</h2>
-<br>
+                    <tr>
 
-<form name="factorial">
-    <table>
-        <thead>
-        <tr>
-            <th>
-                <input class="fact-display" type="number" name="display" id="display">
-            </th>
-        </tr>
-        </thead>
-    </table>
-    <br>
-    <table>
-        <tr>
-            <td>
-                <input class="fact-btn" type="button"
-                       onclick="factorial.display.value = calculateFactoral(factorial.display.value)" value="calculate">
-            </td>
-            <td class="space"></td>
-            <td>
-                <input class="fact-btn" type="button" onclick="factorial.display.value = ''" value="clear">
-            </td>
-        </tr>
-    </table>
-</form>
-<script>
-    function calculateFactoral(input) {
-        let result = 1;
+                        <td><input class="calc-btn" type="button" value="1"
+                                   onclick="calculator.display.value+=1"></td>
+                        <td><input class="calc-btn" type="button" value="2"
+                                   onclick="calculator.display.value+=2"></td>
+                        <td><input class="calc-btn" type="button" value="3"
+                                   onclick="calculator.display.value+=3"></td>
+                        <td><input class="calc-btn" type="button" value="+"
+                                   onclick="calculator.display.value+='+'"></td>
 
-        if (input > 0) {
-            for (let i = input; i > 0; i--) {
-                result *= i;
+                    </tr>
+                    <tr>
+
+                        <td><input class="calc-btn" type="button" value="4"
+                                   onclick="calculator.display.value+=4"></td>
+                        <td><input class="calc-btn" type="button" value="5"
+                                   onclick="calculator.display.value+=5"></td>
+                        <td><input class="calc-btn" type="button" value="6"
+                                   onclick="calculator.display.value+=6"></td>
+                        <td><input class="calc-btn" type="button" value="-"
+                                   onclick="calculator.display.value+='-'"></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><input class="calc-btn" type="button" value="7"
+                                   onclick="calculator.display.value+=7"></td>
+                        <td><input class="calc-btn" type="button" value="8"
+                                   onclick="calculator.display.value+=8"></td>
+                        <td><input class="calc-btn" type="button" value="9"
+                                   onclick="calculator.display.value+=9"></td>
+                        <td><input class="calc-btn" type="button" value="*"
+                                   onclick="calculator.display.value+='*'"></td>
+                    </tr>
+
+                    <tr>
+
+                        <td><input class="calc-btn" type="button" value="c"
+                                   onclick="calculator.display.value=''"></td>
+                        <td><input class="calc-btn" type="button" value="0"
+                                   onclick="calculator.display.value+=0"></td>
+                        <td><input class="calc-btn" type="button" value="="
+                                   onclick="calculator.display.value=calculate(calculator.display.value)">
+                        </td>
+                        <td><input class="calc-btn" type="button" value="/"
+                                   onclick="calculator.display.value+='/'"></td>
+                    </tr>
+
+                    <tr>
+
+                        <td><input class="calc-btn" type="button" value="."
+                                   onclick="calculator.display.value+='.'"></td>
+                        <td><input class="calc-btn" type="button" value="^"
+                                   onclick="calculator.display.value+='^'"></td>
+                        <td><input class="calc-btn" type="button" value="!"
+                                   onclick="calculator.display.value+='!'"></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <br>
+        </form>
+
+
+        <br>
+        <br>
+
+        <h2>Calculate Factorial</h2>
+        <br>
+
+        <form name="factorial">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for="disp">
+                                <input class="fact-display" type="number" name="display" id="disp">
+                            </label>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <input class="fact-btn" type="button"
+                               onclick="factorial.display.value =
+                               calculateFactorial(factorial.display.value)"
+                               value="calculate">
+                    </td>
+
+                    <td class="space"></td>
+                    <td>
+                        <input class="fact-btn" type="button" onclick="factorial.display.value = ''"
+                               value="clear">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+
+            <!--            calculating factorial based on Integer input-->
+            function calculateFactorial(input) {
+                //default result of 1
+                let result = 1;
+
+                //checking if the input parameter is greater than 0
+                if (input > 0) {
+                    //for loop counting down to 1
+                    for (let i = input; i > 0; i--) {
+                        //multiply the result defined above for each i generated till reaching 1.
+                        //does not have to reach 1 as anything multiplied by 1 is itself
+                        result *= i;
+                    }
+                }
+                    //checking if the input parameter is less than 0
+                //if less than 0 the input is taken in as -(num!)
+                else if (input < 0) {
+                    //for loop counting up to 1
+                    for (let i = input; i < 0; i++) {
+                        //multiply the result defined above for each i generated till reaching 1.
+                        //does not have to reach 1 as anything multiplied by 1 is itself
+                        result *= i;
+                    }
+                    //checking if the result is greater than 0
+                    //if greater than 0 multiply by -1 to ensure negative result
+                    if (result > 0) {
+                        result *= (-1);
+                    }
+                }
+                //returns the factorial result
+                return result;
             }
-        } else if (input < 0) {
-            for (let i = input; i < 0; i++) {
-                result *= i;
-            }
 
-            if (result > 0) {
-                result *= (-1);
-            }
-        }
-        return result;
-    }
-
-    function calculate(s) {
-        // --- Parse a calculation string into an array of numbers and operators
-        var calculation = [],
-            current = '';
-        for (var i = 0, ch; ch = s.charAt(i); i++) {
-            if ('^*/+-'.indexOf(ch) > -1) {
-                if (current === '' && ch === '-') {
-                    current = '-';
-                    console.log('\n1: ' + current);
-                } else {
-                    calculation.push(parseFloat(current), ch);
-                    console.log('\n2: ' + current);
+            //This method parses the String, given by the input field
+            //returns an array of characters
+            function calculateHelp(s) {
+                // --- Parse a calculation string into an array of numbers and operators
+                let calculation = [],
                     current = '';
+                let ch;
+                for (let i = 0; i < s.length; i++) {
+                    ch = s.charAt(i);
+                    if ('^*/+-'.indexOf(ch) > -1) {
+                        if (current === '' && ch === '-') {
+                            current = '-';
+                            console.log('\n1: ' + current);
+                        } else {
+                            calculation.push(parseFloat(current), ch);
+                            console.log('\n2: ' + current);
+                            current = '';
+                        }
+                    } else {
+                        current += s.charAt(i);
+                    }
                 }
-            } else {
-                current += s.charAt(i);
+                if (current !== '') {
+                    calculation.push(parseFloat(current));
+                    console.log('\n3: ' + current);
+                }
+                return calculation;
             }
-        }
-        if (current !== '') {
-            calculation.push(parseFloat(current));
-            console.log('\n3: ' + current);
-        }
-        return calculateHelp(calculation);
-    }
 
-    function calculateHelp(calc) {
-        // --- Perform a calculation expressed as an array of operators and numbers
-        var ops = [{'^': (a, b) => Math.pow(a, b)},
-                {'*': (a, b) => a * b, '/': (a, b) => a / b},
-                {'+': (a, b) => a + b, '-': (a, b) => a - b},
-                {'!': (a, b) => a * a}],
-            newCalc = [],
-            currentOp;
-        for (var i = 0; i < ops.length; i++) {
-            for (var j = 0; j < calc.length; j++) {
-                if (ops[i][calc[j]]) {
-                    currentOp = ops[i][calc[j]];
-                } else if (currentOp) {
-                    newCalc[newCalc.length - 1] =
-                        currentOp(newCalc[newCalc.length - 1], calc[j]);
-                    currentOp = null;
+            //calculates the result of the array of characters given by calculateHelp(String s)
+            function calculate(chars) {
+                let calc = calculateHelp(chars);
+                // --- Perform a calculation expressed as an array of operators and numbers
+                let ops = [{'^': (a, b) => Math.pow(a, b)},
+                        {'*': (a, b) => a * b, '/': (a, b) => a / b},
+                        {'+': (a, b) => a + b, '-': (a, b) => a - b},
+                        {'!': (a) => a * a}],
+                    newCalc = [],
+                    currentOp;
+                for (let i = 0; i < ops.length; i++) {
+                    for (let j = 0; j < calc.length; j++) {
+                        if (ops[i][calc[j]]) {
+                            currentOp = ops[i][calc[j]];
+                        } else if (currentOp) {
+                            newCalc[newCalc.length - 1] =
+                                currentOp(newCalc[newCalc.length - 1], calc[j]);
+                            currentOp = null;
+                        } else {
+                            newCalc.push(calc[j]);
+                        }
+                        console.log(newCalc);
+                    }
+                    calc = newCalc;
+                    newCalc = [];
+                }
+                if (calc.length > 1) {
+                    console.log('Error: unable to resolve calculation');
+                    return calc;
                 } else {
-                    newCalc.push(calc[j]);
+                    return calc[0];
                 }
-                console.log(newCalc);
             }
-            calc = newCalc;
-            newCalc = [];
-        }
-        if (calc.length > 1) {
-            console.log('Error: unable to resolve calculation');
-            return calc;
-        } else {
-            return calc[0];
-        }
-    }
-</script>
-
-
-</body>
+        </script>
+    </body>
 </html>
