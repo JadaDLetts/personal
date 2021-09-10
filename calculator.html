@@ -91,11 +91,9 @@
                                    onclick="calculator.display.value+='.'"></td>
                         <td><input class="calc-btn" type="button" value="^"
                                    onclick="calculator.display.value+='^'"></td>
-                        <td><input class="calc-btn" type="button" value="!"
-                                   onclick="calculator.display.value+='!'"></td>
-
+<!--                        <td><input class="calc-btn" type="button" value="!"-->
+<!--                                   onclick="calculator.display.value+='!'"></td>-->
                     </tr>
-
                 </tbody>
             </table>
             <br>
@@ -108,13 +106,14 @@
         <h2>Calculate Factorial</h2>
         <br>
 
-        <form name="factorial">
+        <form name="factorial" class="fact-form">
+            <br>
             <table>
                 <thead>
                     <tr>
                         <th>
                             <label for="disp">
-                                <input class="fact-display" type="number" name="display" id="disp">
+                                <input class="fact-display" type="number" name="display" id="disp" placeholder="insert number without !">
                             </label>
                         </th>
                     </tr>
@@ -137,6 +136,7 @@
                     </td>
                 </tr>
             </table>
+            <br>
         </form>
         <script>
 
