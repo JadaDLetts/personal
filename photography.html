@@ -1,129 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Photography Slideshow</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Photography Slideshow</title>
 
-        <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="hCss/photo.css">
-    </head>
-    <body>
+    <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="hCss/photo.css">
+</head>
+<body>
 
-        <br>
-        <a class="l-arrow btn btn-dark" href="index.html">
-            <i class="fa fa-arrow-left"></i>
-        </a>
+<br>
+<!--back arrow to index page-->
+<a class="l-arrow btn btn-dark" href="index.html">
+    <i class="fa fa-arrow-left"></i>
+</a>
 
-        <h1>Photography Project SlideShow</h1>
+<!--Title of subpage-->
+<h1>Photography Project SlideShow</h1>
 
-        <br>
+<br>
 
-        <div class="slideshow">
-            <div class="mySlides ">
-                <div class="numbertext">1 / 10</div>
-                <img src="pics/1.jpg" alt="Photo 1">
-            </div>
+<!--start of slideshow-->
+<div class="slideshow">
+    <!--    starting class to denote the slides-->
+    <div class="slides ">
+        <div class="numbertext">1 / 10</div>
+        <img src="pics/1.jpg" alt="Photo 1">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">2 / 10</div>
-                <img src="pics/2.jpg" alt="Photo 2">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">2 / 10</div>
+        <img src="pics/2.jpg" alt="Photo 2">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">3 / 10</div>
-                <img src="pics/3.jpg" alt="Photo 3">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">3 / 10</div>
+        <img src="pics/3.jpg" alt="Photo 3">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">4 / 10</div>
-                <img src="pics/4.jpg" alt="Photo 4">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">4 / 10</div>
+        <img src="pics/4.jpg" alt="Photo 4">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">5 / 10</div>
-                <img src="pics/5.jpg" alt="Photo 5">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">5 / 10</div>
+        <img src="pics/5.jpg" alt="Photo 5">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">6 / 10</div>
-                <img src="pics/6.jpg" alt="Photo 6">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">6 / 10</div>
+        <img src="pics/6.jpg" alt="Photo 6">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">7 / 10</div>
-                <img src="pics/7.jpg" alt="Photo 7">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">7 / 10</div>
+        <img src="pics/7.jpg" alt="Photo 7">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">8 / 10</div>
-                <img src="pics/8.jpg" alt="Photo 8">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">8 / 10</div>
+        <img src="pics/8.jpg" alt="Photo 8">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">9 / 10</div>
-                <img src="pics/9.jpg" alt="Photo 9">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">9 / 10</div>
+        <img src="pics/9.jpg" alt="Photo 9">
+    </div>
 
-            <div class="mySlides ">
-                <div class="numbertext">10 / 10</div>
-                <img src="pics/10.jpg" alt="Photo 10">
-            </div>
+    <div class="slides ">
+        <div class="numbertext">10 / 10</div>
+        <img src="pics/10.jpg" alt="Photo 10">
+    </div>
 
-            <a class="btn btn-prev" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
-            <a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
-        </div>
+    <!--    buttons to go to the next or previous photo-->
+    <!--    method nextSlide called with appropriate int parameter to got to next/prev slide-->
+    <a class="btn btn-prev" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
+    <a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
+</div>
 
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-            <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(6)"></span>
-            <span class="dot" onclick="currentSlide(7)"></span>
-            <span class="dot" onclick="currentSlide(8)"></span>
-            <span class="dot" onclick="currentSlide(9)"></span>
-            <span class="dot" onclick="currentSlide(10)"></span>
-        </div>
+<!--placing dots below slideshow for users to click-->
+<!--similar to next/prev buttons but with more range-->
+<!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
+<div class="div-dot">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
+    <span class="dot" onclick="currentSlide(9)"></span>
+</div>
 
-        <script>
-            let sIndex = 1;
-            showSlide(sIndex);
+<!--javaScript methods-->
+<script>
+    //using sIndex to represent the current slide being shown
+    let sIndex = 0;
+    //starts slideshow of photos
+    showSlides();
 
-            function currentSlide(int) {
-                sIndex = int;
-                showSlide(sIndex);
-            }
+    //used to show all of the photos in the slideshow on a timer
+    function showSlides() {
+        //getting the array of slides
+        //retrieves all elements that go by the class name slides
+        let slides = document.getElementsByClassName("slides");
+        //getting the array of dots
+        //retrieves all elements that go by the class name dot
+        let dots = document.getElementsByClassName("dot");
 
-            function showSlide(int) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                let dots = document.getElementsByClassName("dot");
-                if (int > slides.length) {
-                    sIndex = 1;
-                }
-                if (int < 1) {
-                    sIndex = slides.length;
-                }
+        //for loop to make sure only one photo can be displayed at one time
+        //will not have to worry about finding which picture is currently being displayed
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
 
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
+        //for loop to make sure only one dot can be highlighted at one time
+        //will not have to worry about finding which dot is currently being highlighted
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
 
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
+        //checking that the current sIndex is within range of the number of photos
+        if (sIndex >= slides.length) {
+            sIndex = 0
+        } else if (sIndex < 0) {
+            sIndex = slides.length - 1
+        }
 
-                dots[sIndex - 1].className += " active";
-                slides[sIndex - 1].style.display = "block";
-            }
+        //displays the slide selected
+        slides[sIndex].style.display = "block";
+        //displays the dot selected/ the dot associated with the slide currently displayed
+        dots[sIndex].className += " active";
 
-            function nextSlide(int) {
-                showSlide(sIndex += int);
-            }
+        //changing the image every 7 seconds
+        setTimeout(showSlides, 7000);
+        //increasing the sIndex so that the slideshow does not stay on one image
+        //setTimeout will not increment the sIndex
+        sIndex++;
+    }
+
+    function currentSlide(int) {
+        sIndex = int;
+        showSlide(sIndex);
+    }
+
+    function stopDisplaye(){
+
+    }
+
+    //used to show individual slides
+    //parameter int represents the number of the slide to be shown
+    function showSlide(int) {
+
+        //initiating sIndex equal to the given parameter
+        sIndex = int;
+
+        //getting the array of slides
+        //retrieves all elements that go by the class name slides
+        let slides = document.getElementsByClassName("slides");
+        //getting the array of dots
+        //retrieves all elements that go by the class name dot
+        let dots = document.getElementsByClassName("dot");
 
 
-        </script>
-    </body>
+        //checking that the current sIndex is within range of the number of photos
+        if (sIndex >= slides.length) {
+            sIndex = 0
+        } else if (sIndex < 0) {
+            sIndex = slides.length - 1
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        //displays the slide selected
+        slides[sIndex].style.display = "block";
+        //displays the dot selected/ the dot associated with the slide currently displayed
+        dots[sIndex].className += " active";
+    }
+
+    function nextSlide(int) {
+        showSlide(sIndex += int);
+    }
+
+
+</script>
+</body>
 </html>
