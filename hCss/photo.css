@@ -4,7 +4,7 @@ img {
 
 }
 
-.mySlides {
+.slides {
     display: none;
     text-align: center;
 }
@@ -16,10 +16,10 @@ h1 {
 
 .numbertext {
     color: white;
-    padding: 8px 12px;
+    padding: 155px 60px;
     position: absolute;
     top: 0;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .btn-prev, .btn-nxt {
@@ -34,11 +34,11 @@ h1 {
 }
 
 .btn-prev {
-    margin-left: 10px;
+    margin-left: 50px;
 }
 
 .btn-nxt {
-    margin-right: 30px;
+    margin-right: 50px;
     right: 0;
 }
 
@@ -76,4 +76,8 @@ h1 {
 
 .l-arrow:hover {
     background-color: grey;
+}
+
+.div-dot{
+    text-align: center;
 }

@@ -35,6 +35,12 @@ table {
     margin: auto;
 }
 
+.fact-form{
+    background-color: black;
+    width: 350px;
+    margin: auto;
+}
+
 .calc-display {
     width: 400px;
     cursor: not-allowed;
