@@ -102,24 +102,23 @@
         }
     }
 
-    function checkPlayerTurn(){
-        if(currentTurn === person){
+    function checkPlayerTurn() {
+        if (currentTurn === person) {
             personTurn(person);
         }
     }
 
     function personTurn(sym) {
-          document.getElementById("t-board").style.cursor = "pointer";
+        document.getElementById("t-board").style.cursor = "pointer";
         document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
         let board = Math.floor(Math.random() * 9);
         let letter;
         let op;
         let comp;
 
-        if (sym === 1){
+        if (sym === 1) {
             comp = 2;
-        }
-        else{
+        } else {
             comp = 1;
         }
 
@@ -130,8 +129,7 @@
             letter = "O";
             op = "O";
         }
-
-
+        
         if (document.getElementById("b" + board).innerText === "") {
             //document.getElementById("b" + board).textContent = letter;
             currentTurn = comp;
@@ -142,9 +140,6 @@
             personTurn(sym);
         }
         checkEnd();
-
-
-
     }
 
     function compTurn(sym) {
@@ -154,10 +149,9 @@
         let op;
         let helpPerson;
 
-        if (sym === 1){
+        if (sym === 1) {
             helpPerson = 2;
-        }
-        else{
+        } else {
             helpPerson = 1;
         }
 
