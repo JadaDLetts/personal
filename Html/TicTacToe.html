@@ -27,20 +27,20 @@
     <br>
     <table class="tb-table">
         <tr class="row-1">
-            <td id="b0" class="tb"></td>
-            <td id="b1" class="tb"></td>
-            <td id="b2" class="tb"></td>
+            <td id="b0" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b1" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b2" class="tb" onclick="checkPlayerTurn()"></td>
         </tr>
 
         <tr class="row-2">
-            <td id="b3" class="tb"></td>
-            <td id="b4" class="tb"></td>
-            <td id="b5" class="tb"></td>
+            <td id="b3" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b4" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b5" class="tb" onclick="checkPlayerTurn()"></td>
         </tr>
         <tr class="row3">
-            <td id="b6" class="tb"></td>
-            <td id="b7" class="tb"></td>
-            <td id="b8" class="tb"></td>
+            <td id="b6" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b7" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b8" class="tb" onclick="checkPlayerTurn()"></td>
         <tr>
     </table>
 </div>
@@ -73,6 +73,8 @@
     //used to identify whether start game was pressed
     let pressed = 0;
 
+    let currentTurn = 1;
+
     //function to start the tic tac toe game
     function startGame() {
         if (pressed !== 1) {
@@ -86,13 +88,13 @@
 
             if (range % 2 === 0) {
                 document.getElementById("title").innerHTML += "<h3>You are Player 2</h3>";
-                document.getElementById("whoseTurn").innerHTML += "<h2>Enemy Turn</h2>";
+                document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
                 person = 2;
                 comp = 1;
                 compTurn(comp);
             } else {
                 document.getElementById("title").innerHTML += "<h3>You are Player 1</h3>";
-                document.getElementById("whoseTurn").innerHTML += "<h2>Your Turn</h2>";
+                document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
                 person = 1;
                 comp = 2;
                 personTurn(person);
@@ -100,7 +102,15 @@
         }
     }
 
+    function checkPlayerTurn(){
+        if(currentTurn === person){
+            personTurn(person);
+        }
+    }
+
     function personTurn(sym) {
+          document.getElementById("t-board").style.cursor = "pointer";
+        document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
         let board = Math.floor(Math.random() * 9);
         let letter;
         let op;
@@ -123,29 +133,32 @@
 
 
         if (document.getElementById("b" + board).innerText === "") {
-           // document.getElementById("b" + board).textContent = letter;
+            //document.getElementById("b" + board).textContent = letter;
+            currentTurn = comp;
+            document.getElementById("t-board").style.cursor = "";
             //compTurn(comp);
         } else {
-            //checkEnd();
+            checkEnd();
             personTurn(sym);
         }
-       // checkEnd();
+        checkEnd();
 
-        document.getElementById("t-board").style.cursor = "pointer";
+
 
     }
 
     function compTurn(sym) {
+        document.getElementById("whoseTurn").innerHTML += "<h2>Enemy Turn</h2>";
         let board = Math.floor(Math.random() * 9);
         let letter;
         let op;
-        let person;
+        let helpPerson;
 
         if (sym === 1){
-            person = 2;
+            helpPerson = 2;
         }
         else{
-            person = 1;
+            helpPerson = 1;
         }
 
         if (sym === 1) {
@@ -158,7 +171,8 @@
 
         if (document.getElementById("b" + board).innerText === "") {
             document.getElementById("b" + board).textContent = letter;
-            personTurn(person);
+            currentTurn = helpPerson;
+            checkPlayerTurn();
         } else {
             checkEnd();
             compTurn(sym);
