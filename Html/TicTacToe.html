@@ -16,15 +16,19 @@
     <i class="fa fa-arrow-left"></i>
 </a>
 <div id="title">
-<h1>Tic Tac Toe</h1>
+    <h1>Tic Tac Toe</h1>
+</div>
+
+<div id="whoseTurn">
+
 </div>
 <br>
-<div class="ticTacToe-board-2">
+<div class="ticTacToe-board-2" id="t-board">
     <br>
     <table class="tb-table">
         <tr class="row-1">
-            <td id="b0" class="tb" onclick="turnGreen('b0')"></td>
-            <td id="b1" class="tb" onclick="turnGreen('b1')"></td>
+            <td id="b0" class="tb"></td>
+            <td id="b1" class="tb"></td>
             <td id="b2" class="tb"></td>
         </tr>
 
@@ -41,48 +45,171 @@
     </table>
 </div>
 
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
-<!--<hr>-->
-<!--<div class="ticTacToe-board">-->
-
-<!--    <div id="board_0" class="t-board"></div>-->
-<!--    <div id="board_1" class="t-board"></div>-->
-<!--    <div id="board_2" class="t-board"></div>-->
-<!--    <div id="board_3" class="t-board"></div>-->
-<!--    <div id="board_4" class="t-board"></div>-->
-<!--    <div id="board_5" class="t-board"></div>-->
-<!--    <div id="board_6" class="t-board"></div>-->
-<!--    <div id="board_7" class="t-board"></div>-->
-<!--    <div id="board_8" class="t-board"></div>-->
-
-<!--</div>-->
+<!--<br>
+<br>
+<br>
+<hr>
+<div class="ticTacToe-board">
+    <div id="board_0" class="t-board"></div>
+    <div id="board_1" class="t-board"></div>
+    <div id="board_2" class="t-board"></div>
+    <div id="board_3" class="t-board"></div>
+    <div id="board_4" class="t-board"></div>
+    <div id="board_5" class="t-board"></div>
+    <div id="board_6" class="t-board"></div>
+    <div id="board_7" class="t-board"></div>
+    <div id="board_8" class="t-board"></div>
+</div>-->
 
 <a class="btn btn-outline-dark" onclick="startGame()">Start Game</a>
-<a class="btn btn-outline-dark">Start Over</a>
+<a class="btn btn-outline-dark" onclick="reset()">Reset</a>
 
 
 <script>
+    //used to identify the turn of the human player
+    let person = 0;
+    //used to identify the turn of the computer player
+    let comp = 0;
+    //used to identify whether start game was pressed
+    let pressed = 0;
 
-    function turnGreen(string){
+    //function to start the tic tac toe game
+    function startGame() {
+        if (pressed !== 1) {
+            pressed = 1;
+            let range = Math.floor(Math.random() * (10 - 1) + 1);
 
-        let b = document.getElementById(string);
-        if(b.style.backgroundColor === "green"){
-            b.style.backgroundColor = "yellow"
-        }else {
-            b.innerText ="X";
-            b.style.backgroundColor = "green";
+            if (document.getElementById("title").innerHTML.indexOf("<h3>You are Player 2</h3>") !== -1
+                || document.getElementById("title").innerHTML.indexOf("<h3>You are Player 1</h3>") !== -1) {
+                document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
+            }
+
+            if (range % 2 === 0) {
+                document.getElementById("title").innerHTML += "<h3>You are Player 2</h3>";
+                document.getElementById("whoseTurn").innerHTML += "<h2>Enemy Turn</h2>";
+                person = 2;
+                comp = 1;
+                compTurn(comp);
+            } else {
+                document.getElementById("title").innerHTML += "<h3>You are Player 1</h3>";
+                document.getElementById("whoseTurn").innerHTML += "<h2>Your Turn</h2>";
+                person = 1;
+                comp = 2;
+                personTurn(person);
+            }
         }
     }
-    function startGame() {
 
-        let range = Math.random() * (10-1) + 1;
-        if(range % 2 === 0){
-            document.getElementById("title").innerHTML +="<p>You are Player 2</p>";
-        }else{
-            document.getElementById("title").innerHTML +="<p>You are Player 1</p>";
+    function personTurn(sym) {
+        let board = Math.floor(Math.random() * 9);
+        let letter;
+        let op;
+        let comp;
+
+        if (sym === 1){
+            comp = 2;
         }
+        else{
+            comp = 1;
+        }
+
+        if (sym === 1) {
+            letter = "X";
+            op = "O"
+        } else {
+            letter = "O";
+            op = "O";
+        }
+
+
+        if (document.getElementById("b" + board).innerText === "") {
+           // document.getElementById("b" + board).textContent = letter;
+            //compTurn(comp);
+        } else {
+            //checkEnd();
+            personTurn(sym);
+        }
+       // checkEnd();
+
+        document.getElementById("t-board").style.cursor = "pointer";
+
+    }
+
+    function compTurn(sym) {
+        let board = Math.floor(Math.random() * 9);
+        let letter;
+        let op;
+        let person;
+
+        if (sym === 1){
+            person = 2;
+        }
+        else{
+            person = 1;
+        }
+
+        if (sym === 1) {
+            letter = "X";
+            op = "O"
+        } else {
+            letter = "O";
+            op = "O";
+        }
+
+        if (document.getElementById("b" + board).innerText === "") {
+            document.getElementById("b" + board).textContent = letter;
+            personTurn(person);
+        } else {
+            checkEnd();
+            compTurn(sym);
+        }
+        checkEnd();
+    }
+
+    function checkEnd() {
+        console.log("check end");
+
+        let boards = document.getElementsByClassName("tb");
+        let currFilled = 0;
+        for (let i = 0; i < boards.length; i++) {
+            console.log("1");
+            if (boards[i].innerText !== "") {
+                currFilled += 1;
+            }
+        }
+        document.getElementById("title").innerHTML += "Curr Filled" + currFilled;
+
+        if (currFilled === 9) {
+            document.getElementById("t-board").innerText = "GAME OVER!"
+        }
+    }
+
+    function reset() {
+        pressed = 0;
+        if (document.getElementById("title").innerHTML.indexOf("<h3>You are Player 2</h3>") !== -1
+            || document.getElementById("title").innerHTML.indexOf("<h3>You are Player 1</h3>") !== -1) {
+            document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
+        }
+
+        document.getElementById("whoseTurn").innerHTML = "";
+        document.getElementById("t-board").innerHTML = "<br>\n" +
+            "    <table class=\"tb-table\">\n" +
+            "        <tr class=\"row-1\">\n" +
+            "            <td id=\"b0\" class=\"tb\" onclick=\"turnGreen('b0')\"></td>\n" +
+            "            <td id=\"b1\" class=\"tb\" onclick=\"turnGreen('b1')\"></td>\n" +
+            "            <td id=\"b2\" class=\"tb\"></td>\n" +
+            "        </tr>\n" +
+            "\n" +
+            "        <tr class=\"row-2\">\n" +
+            "            <td id=\"b3\" class=\"tb\"></td>\n" +
+            "            <td id=\"b4\" class=\"tb\"></td>\n" +
+            "            <td id=\"b5\" class=\"tb\"></td>\n" +
+            "        </tr>\n" +
+            "        <tr class=\"row3\">\n" +
+            "            <td id=\"b6\" class=\"tb\"></td>\n" +
+            "            <td id=\"b7\" class=\"tb\"></td>\n" +
+            "            <td id=\"b8\" class=\"tb\"></td>\n" +
+            "        <tr>"
     }
 </script>
 
