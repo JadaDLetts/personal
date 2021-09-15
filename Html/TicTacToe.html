@@ -121,13 +121,19 @@
                 comp = 2;
 
                 //calling function personTurn to get the humans move
+                //does not call checkPlayerTurn as it is known that it is the human players turn
                 personTurn(person);
             }
         }
     }
 
+    //function to check if it is the human players turn
+    //helper to see if personTurn needs to be called
     function checkPlayerTurn() {
+        //checking if the variable currentTurn is equal to person
+        //person represents the player number of the human
         if (currentTurn === person) {
+            //if it is the humans turn the function personTurn is called
             personTurn(person);
         }
     }
@@ -216,16 +222,22 @@
         }
     }
 
+    //function reset is used to reset the board when the game has ended or when the human player
+    // wishes to start a new game regardless of whether the game has ended
     function reset() {
+        //changes the variable representing whether start game was pressed or not to false
         pressed = false;
-        if (document.getElementById("title").innerHTML.indexOf("<h3>You are Player 2</h3>") !== -1
-            || document.getElementById("title").innerHTML.indexOf("<h3>You are Player 1</h3>") !== -1) {
-            document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
-        }
 
+        //this line is used to remove what player number the human player is from the element with the id title
+        document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
+
+        //this line ensures that the element with the id whoseTurn displays nothing
+        // as it is no ones turn when the game has not started
         document.getElementById("whoseTurn").innerHTML = "";
 
 
+        //when the game has ended the board is removed by text that says the game ended and who won
+        //this re-writes the board to be used for another game
         if (gameEnd === true) {
             document.getElementById("t-board").innerHTML = "<br>\n" +
                 "    <table class=\"tb-table\">\n" +
@@ -246,7 +258,11 @@
                 "            <td id=\"b8\" class=\"tb\"></td>\n" +
                 "        <tr>"
         } else {
-
+            //if the game has not ended when reset is pressed
+            //loop through all the board cells and empty their text content
+            for (let i = 0; i < 10; i++) {
+                document.getElementById("b" + i).textContent = "";
+            }
         }
     }
 </script>
