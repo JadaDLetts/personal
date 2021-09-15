@@ -4,6 +4,10 @@ h1 {
     color: white;
 }
 
+h3, h2 {
+    color: white;
+}
+
 body {
     margin: 30px 50px 30px 50px;
     background-color: black;
@@ -47,17 +51,15 @@ body {
 td {
     width: 200px;
     height: 200px;
+    border: 3px solid white;
+    border-top-color: black;
 }
 
 table {
     text-align: center;
     margin: auto;
     font-size: 100px;
-}
-
-td {
-    border: 3px solid white;
-    border-top-color: black;
+    color: white;
 }
 
 #b0, #b3, #b6 {
@@ -74,19 +76,18 @@ td {
 
 .buttons {
     text-align: center;
-
 }
 
-.btn-reset, .btn-start{
+.btn-reset, .btn-start {
     background-color: white;
 }
 
-.btn-start:hover{
+.btn-start:hover {
     background-color: seagreen;
     color: black;
 }
 
-.btn-reset:hover{
+.btn-reset:hover {
     background-color: indianred;
     color: black;
 }
