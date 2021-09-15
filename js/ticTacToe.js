@@ -1,3 +1,5 @@
+//TODO: update checkEnd
+
 //used to identify the turn of the human player
 let person = 0;
 //used to identify the turn of the computer player
