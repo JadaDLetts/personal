@@ -138,20 +138,13 @@
         }
     }
 
-    function personTurn(sym) {
+    function personTurn(turn) {
         document.getElementById("t-board").style.cursor = "pointer";
         document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
         let board = Math.floor(Math.random() * 9);
         let letter;
-        let comp;
 
-        if (sym === 1) {
-            comp = 2;
-        } else {
-            comp = 1;
-        }
-
-        if (sym === 1) {
+        if (turn === 1) {
             letter = "X";
         } else {
             letter = "O";
@@ -161,39 +154,45 @@
             //document.getElementById("b" + board).textContent = letter;
             currentTurn = comp;
             document.getElementById("t-board").style.cursor = "";
-            //compTurn(comp);
+            compTurn(comp);
         } else {
             checkEnd();
-            personTurn(sym);
+            personTurn(person);
         }
         checkEnd();
     }
 
-    function compTurn(sym) {
-        document.getElementById("whoseTurn").innerHTML += "<h2>Enemy Turn</h2>";
+    //function compTurn represent the turn the computer will make
+    function compTurn(turn) {
+        //write that it is the computers turn to the element whose id is whoseTurn
+        document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
+
+        //random positive int generated to represent the location the computers letter will be on
         let board = Math.floor(Math.random() * 9);
+
+        //denotes the letter the computer will use in the game
         let letter;
-        let helpPerson;
 
-        if (sym === 1) {
-            helpPerson = 2;
-        } else {
-            helpPerson = 1;
-        }
-
-        if (sym === 1) {
+        //if the turn of the computer is 1
+        if (turn === 1) {
+            //the letter associated with the computers turn is X
             letter = "X";
         } else {
+            //if the turn of the computer is not 1
+            //the letter associated with the computers turn is O
             letter = "O";
         }
 
+        //if the board cell associated with the random generated int is empty
+        //the letter use by the computer will be placed on the board
         if (document.getElementById("b" + board).innerText === "") {
             document.getElementById("b" + board).textContent = letter;
-            currentTurn = helpPerson;
-            checkPlayerTurn();
+            //changes the current turn to be the humans turn
+            currentTurn = person;
+            personTurn(person)
         } else {
             checkEnd();
-            compTurn(sym);
+            compTurn(turn);
         }
         checkEnd();
     }
