@@ -71,32 +71,56 @@
     //used to identify the turn of the computer player
     let comp = 0;
     //used to identify whether start game was pressed
-    let pressed = 0;
+    let pressed = false;
 
+    //represents whose turn it is
+    //integer value represents whether it is player 1 or 2's turn
     let currentTurn = 1;
+
+    //boolean representing whether the game has ended
+    let gameEnd = false;
 
     //function to start the tic tac toe game
     function startGame() {
-        if (pressed !== 1) {
-            pressed = 1;
-            let range = Math.floor(Math.random() * (10 - 1) + 1);
+        //if pressed is false set pressed to true and start game
+        if (pressed === false) {
+            pressed = true;
 
-            if (document.getElementById("title").innerHTML.indexOf("<h3>You are Player 2</h3>") !== -1
-                || document.getElementById("title").innerHTML.indexOf("<h3>You are Player 1</h3>") !== -1) {
-                document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
-            }
+            //generates a random positive integer number between 1 and 10
+            let rand = Math.floor(Math.random() * (10 - 1) + 1);
 
-            if (range % 2 === 0) {
+            //if the remainder of the random positive integer when mod by 2 is 0 then
+            //the human is player number 2
+            if (rand % 2 === 0) {
+
+                //adding on to the html element whose ID is title
+                //adds what player number the human user is to the screen
                 document.getElementById("title").innerHTML += "<h3>You are Player 2</h3>";
+
+                //writes whose turn it is to the div with the id whoseTurn
+                //currently the Enemy's turn as it is player 1 based on the if statement above
                 document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
+
+                //setting the player number status of the human and computer
                 person = 2;
                 comp = 1;
+
+                //calling function compTurn to get the computers move
                 compTurn(comp);
             } else {
+                //adding on to the html element whose ID is title
+                //adds what player number the human user is to the screen
                 document.getElementById("title").innerHTML += "<h3>You are Player 1</h3>";
+
+                //writes whose turn it is to the div with the id whoseTurn
+                //currently the Players turn as it is player 1 based on the else statement
                 document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
+
+                //setting the player number status of the human and computer
                 person = 1;
                 comp = 2;
+
+                //calling function personTurn to get the humans move
                 personTurn(person);
             }
         }
@@ -193,31 +217,37 @@
     }
 
     function reset() {
-        pressed = 0;
+        pressed = false;
         if (document.getElementById("title").innerHTML.indexOf("<h3>You are Player 2</h3>") !== -1
             || document.getElementById("title").innerHTML.indexOf("<h3>You are Player 1</h3>") !== -1) {
             document.getElementById("title").innerHTML = "<h1>Tic Tac Toe</h1>"
         }
 
         document.getElementById("whoseTurn").innerHTML = "";
-        document.getElementById("t-board").innerHTML = "<br>\n" +
-            "    <table class=\"tb-table\">\n" +
-            "        <tr class=\"row-1\">\n" +
-            "            <td id=\"b0\" class=\"tb\" onclick=\"turnGreen('b0')\"></td>\n" +
-            "            <td id=\"b1\" class=\"tb\" onclick=\"turnGreen('b1')\"></td>\n" +
-            "            <td id=\"b2\" class=\"tb\"></td>\n" +
-            "        </tr>\n" +
-            "\n" +
-            "        <tr class=\"row-2\">\n" +
-            "            <td id=\"b3\" class=\"tb\"></td>\n" +
-            "            <td id=\"b4\" class=\"tb\"></td>\n" +
-            "            <td id=\"b5\" class=\"tb\"></td>\n" +
-            "        </tr>\n" +
-            "        <tr class=\"row3\">\n" +
-            "            <td id=\"b6\" class=\"tb\"></td>\n" +
-            "            <td id=\"b7\" class=\"tb\"></td>\n" +
-            "            <td id=\"b8\" class=\"tb\"></td>\n" +
-            "        <tr>"
+
+
+        if (gameEnd === true) {
+            document.getElementById("t-board").innerHTML = "<br>\n" +
+                "    <table class=\"tb-table\">\n" +
+                "        <tr class=\"row-1\">\n" +
+                "            <td id=\"b0\" class=\"tb\"></td>\n" +
+                "            <td id=\"b1\" class=\"tb\"></td>\n" +
+                "            <td id=\"b2\" class=\"tb\"></td>\n" +
+                "        </tr>\n" +
+                "\n" +
+                "        <tr class=\"row-2\">\n" +
+                "            <td id=\"b3\" class=\"tb\"></td>\n" +
+                "            <td id=\"b4\" class=\"tb\"></td>\n" +
+                "            <td id=\"b5\" class=\"tb\"></td>\n" +
+                "        </tr>\n" +
+                "        <tr class=\"row3\">\n" +
+                "            <td id=\"b6\" class=\"tb\"></td>\n" +
+                "            <td id=\"b7\" class=\"tb\"></td>\n" +
+                "            <td id=\"b8\" class=\"tb\"></td>\n" +
+                "        <tr>"
+        } else {
+
+        }
     }
 </script>
 
