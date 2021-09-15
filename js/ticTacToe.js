@@ -12,6 +12,10 @@ let currentTurn = 1;
 //boolean representing whether the game has ended
 let gameEnd = false;
 
+//represents the player number that won
+// 0 if tied
+let winner = 0;
+
 //function to start the tic tac toe game
 function startGame() {
     //if pressed is false set pressed to true and start game
@@ -186,13 +190,60 @@ function checkEnd() {
         }
     }
 
+    gameEnd = checkWinner(0, 1, 2) || checkWinner(3, 4, 5)
+        || checkWinner(6, 7, 8) || checkWinner(0, 3, 6)
+        || checkWinner(1, 4, 7) || checkWinner(2, 5, 8)
+        || checkWinner(0, 4, 8) || checkWinner(2, 4, 6);
+
+    console.log("after check wins game end is: " + gameEnd);
+
     //if all cells are filled then the game is over
     //TODO: update so that game is also over if player/comp wins before board is full
-    if (currFilled === 9) {
+    if (currFilled === 9 && gameEnd === false) {
         //clears whose turn it is
         document.getElementById("whoseTurn").innerHTML = "";
         gameEnd = true;
         document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
+    }
+    if (gameEnd) {
+        if (winner === person) {
+            document.getElementById("whoseTurn").innerHTML = "";
+            setTimeout(function () {
+                document.getElementById("t-board").innerHTML
+                    = "<h3>GAME OVER!</h3> <h3>YOU WON!!!</h3>"
+            }, 3000);
+        } else {
+            document.getElementById("whoseTurn").innerHTML = "";
+            document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>YOU LOST.</h3>"
+        }
+    }
+}
+
+//function to check who won the game before a tie occurred
+function checkWinner(c1, c2, c3) {
+    //getting the text of the cells associated with the numbers passed in and represented by c1, c2, and c3
+    let a = document.getElementById("b" + c1).innerText;
+    let b = document.getElementById("b" + c2).innerText;
+    let c = document.getElementById("b" + c3).innerText;
+
+    //comparing the text against each other to see if they are all the same
+    if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0 && b.localeCompare(c) === 0) {
+        //checking if the letter associated with a,b and c is X or O
+        //if x then winner is player 1
+        //if o then winner is player 2
+        //returns true as the game has now ended
+        if (a.localeCompare("X") === 0) {
+            winner = 1;
+            return true;
+        } else if (a.localeCompare("O") === 0) {
+            winner = 2;
+            return true;
+        }
+    } else {
+        //returns false because:
+            //a, b, or c are not the same letter
+            // a, b, or c are empty
+        return false;
     }
 }
 
