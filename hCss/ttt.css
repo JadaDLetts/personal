@@ -1,10 +1,12 @@
 h1 {
     text-align: center;
     text-decoration: underline;
+    color: white;
 }
 
 body {
     margin: 30px 50px 30px 50px;
+    background-color: black;
 }
 
 .ticTacToe-board {
@@ -15,32 +17,32 @@ body {
     margin: auto;
 }
 
-.t-board {
-    display: flex;
-    width: 200px;
-    height: 200px;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    border: 3px solid black;
-    transition: background 0.2s ease-in-out;
-    border-top-color: white;
-}
+/*.t-board {*/
+/*    display: flex;*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    font-size: 3rem;*/
+/*    font-weight: bold;*/
+/*    border: 3px solid white;*/
+/*    transition: background 0.2s ease-in-out;*/
+/*    border-top-color: black;*/
+/*}*/
 
-#board_0, #board_1, #board_2,
-#board_3, #board_4, #board_5,
-#board_6, #board_7, #board_8 {
-    border-left-color: white;
-}
+/*#board_0, #board_1, #board_2,*/
+/*#board_3, #board_4, #board_5,*/
+/*#board_6, #board_7, #board_8 {*/
+/*    border-left-color: black;*/
+/*}*/
 
-#board_2, #board_5, #board_8 {
-    border-right-color: white;
-}
+/*#board_2, #board_5, #board_8 {*/
+/*    border-right-color: black;*/
+/*}*/
 
-#board_6, #board_7, #board_8 {
-    border-bottom-color: white;
-}
+/*#board_6, #board_7, #board_8 {*/
+/*    border-bottom-color: black;*/
+/*}*/
 
 td {
     width: 200px;
@@ -54,18 +56,37 @@ table {
 }
 
 td {
-    border: 3px solid black;
-    border-top-color: white;
+    border: 3px solid white;
+    border-top-color: black;
 }
 
 #b0, #b3, #b6 {
-    border-left-color: white;
+    border-left-color: black;
 }
 
 #b2, #b5, #b8 {
-    border-right-color: white;
+    border-right-color: black;
 }
 
 #b6, #b7, #b8 {
-    border-bottom-color: white;
+    border-bottom-color: black;
+}
+
+.buttons {
+    text-align: center;
+
+}
+
+.btn-reset, .btn-start{
+    background-color: white;
+}
+
+.btn-start:hover{
+    background-color: seagreen;
+    color: black;
+}
+
+.btn-reset:hover{
+    background-color: indianred;
+    color: black;
 }
