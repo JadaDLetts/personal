@@ -204,21 +204,28 @@
         checkEnd();
     }
 
+    //function to determine whether the game has ended or not
+    //TODO: determine who won the game
     function checkEnd() {
-        console.log("check end");
-
+        //retrieving all cells in the board that have the className tb
         let boards = document.getElementsByClassName("tb");
+
+        //denotes the number of cells filled
         let currFilled = 0;
+
+        //loop through the list of board cells stored in variable board
         for (let i = 0; i < boards.length; i++) {
-            console.log("1");
+            //checking if the innerText of the cell is not empty
             if (boards[i].innerText !== "") {
+                //if it is not empty then 1 is added to the variable currFilled
                 currFilled += 1;
             }
         }
-        document.getElementById("title").innerHTML += "Curr Filled" + currFilled;
 
+        //if all cells are filled then the game is over
+        //TODO: update so that game is also over if player/comp wins before board is full
         if (currFilled === 9) {
-            document.getElementById("t-board").innerText = "GAME OVER!"
+            document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
         }
     }
 
