@@ -27,20 +27,20 @@
     <br>
     <table class="tb-table">
         <tr class="row-1">
-            <td id="b0" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b1" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b2" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b0" class="tb"></td>
+            <td id="b1" class="tb"></td>
+            <td id="b2" class="tb"></td>
         </tr>
 
         <tr class="row-2">
-            <td id="b3" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b4" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b5" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b3" class="tb"></td>
+            <td id="b4" class="tb"></td>
+            <td id="b5" class="tb"></td>
         </tr>
         <tr class="row3">
-            <td id="b6" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b7" class="tb" onclick="checkPlayerTurn()"></td>
-            <td id="b8" class="tb" onclick="checkPlayerTurn()"></td>
+            <td id="b6" class="tb"></td>
+            <td id="b7" class="tb"></td>
+            <td id="b8" class="tb"></td>
         <tr>
     </table>
 </div>
@@ -127,74 +127,104 @@
         }
     }
 
-    //function to check if it is the human players turn
-    //helper to see if personTurn needs to be called
-    function checkPlayerTurn() {
-        //checking if the variable currentTurn is equal to person
-        //person represents the player number of the human
-        if (currentTurn === person) {
-            //if it is the humans turn the function personTurn is called
-            personTurn(person);
-        }
-    }
-
+    //function personTurn represent the turn the human will make
     function personTurn(turn) {
+        //while it is the players turn
+        //the player has access to the cursor style that shows they can press a cell for their turn
         document.getElementById("t-board").style.cursor = "pointer";
+
+        //writes that it is the humans turn to the element whose id is whoseTurn
         document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
-        let board = Math.floor(Math.random() * 9);
-        let letter;
 
-        if (turn === 1) {
-            letter = "X";
-        } else {
-            letter = "O";
-        }
+        //a list of all cells in the board
+        let cells = document.getElementsByClassName("tb");
 
-        if (document.getElementById("b" + board).innerText === "") {
-            //document.getElementById("b" + board).textContent = letter;
-            currentTurn = comp;
-            document.getElementById("t-board").style.cursor = "";
-            compTurn(comp);
-        } else {
-            checkEnd();
-            personTurn(person);
+        //todo: not necessary? add while loop, so while cell a proper cell is not pressed run through the loop
+
+        //looping through all the cells in the board
+        for (let i = 0; i < cells.length; i++) {
+            //when a cell is clicked the move will be executed
+            document.getElementById("b" + i).onclick = function () {
+                //calls helper function to make a move when a cell has been clicked
+                executeMove(i, turn)
+            }
         }
-        checkEnd();
     }
 
-    //function compTurn represent the turn the computer will make
+    //helper function to execute the humans move once they have clicked on a cell
+    function executeMove(num, turn) {
+        //denotes the letter the computer will use in the game
+        let letter = checkTurn(turn);
+
+        //checking if the cell clicked on is empty
+        //if the cell clicked is not empty the program will wait until an empty cell is clicked
+        if (document.getElementById("b" + num).innerText === "") {
+            document.getElementById("b" + num).textContent = letter;
+
+            //changes the value of whose turn it is
+            //set to persons player number as the player just went
+            currentTurn = comp;
+
+            //checks if the game ended after the players move
+            checkEnd();
+
+            //calls compTurn to go to make the computers move
+            compTurn(comp);
+        }
+    }
+
+    //function to associate the letter X or O with the human/computer
+    function checkTurn(turn) {
+        //if the turn of the computer is 1
+        if (turn === 1) {
+            //the letter associated with the computers turn is X
+            return "X";
+        } else {
+            //if the turn of the computer is not 1
+            //the letter associated with the computers turn is O
+            return "O";
+        }
+    }
+
+    //function compTurn represents the turn the computer will make
     function compTurn(turn) {
-        //write that it is the computers turn to the element whose id is whoseTurn
+        //if it is not the players turn they do not have access
+        // to the cursor style that shows they can press a cell for their turn
+        document.getElementById("t-board").style.cursor = "not-allowed";
+
+        //writes that it is the computers turn to the element whose id is whoseTurn
         document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
 
         //random positive int generated to represent the location the computers letter will be on
         let board = Math.floor(Math.random() * 9);
 
         //denotes the letter the computer will use in the game
-        let letter;
-
-        //if the turn of the computer is 1
-        if (turn === 1) {
-            //the letter associated with the computers turn is X
-            letter = "X";
-        } else {
-            //if the turn of the computer is not 1
-            //the letter associated with the computers turn is O
-            letter = "O";
-        }
+        let letter = checkTurn(turn);
 
         //if the board cell associated with the random generated int is empty
         //the letter use by the computer will be placed on the board
         if (document.getElementById("b" + board).innerText === "") {
-            document.getElementById("b" + board).textContent = letter;
-            //changes the current turn to be the humans turn
+
+            //using set timeout so that the computers turn does not immediately happen
+            setTimeout(function () {
+                document.getElementById("b" + board).textContent = letter
+            }, 1000);
+
+            //changes the value of whose turn it is
+            //set to persons player number as the computer just went
             currentTurn = person;
-            personTurn(person)
-        } else {
+
+            //checks if the game ended after the computers move
             checkEnd();
+
+            //using set timeout so that after the computer makes a move it is not immediately the persons move
+            setTimeout(function () {
+                personTurn(person)
+            }, 2000);
+        } else {
+            //if the random generated board cell is full a loop is ran until an empty cell is chose
             compTurn(turn);
         }
-        checkEnd();
     }
 
     //function to determine whether the game has ended or not
@@ -218,6 +248,7 @@
         //if all cells are filled then the game is over
         //TODO: update so that game is also over if player/comp wins before board is full
         if (currFilled === 9) {
+            gameEnd = true;
             document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
         }
     }
