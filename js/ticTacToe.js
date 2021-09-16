@@ -207,20 +207,17 @@ function checkEnd() {
         document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
     }
     //if the game ended
-    if (gameEnd) {
+    else if (gameEnd === true) {
         //if the winner id number matches the person player number
         if (winner === person) {
             //the human is told that they've won
             document.getElementById("whoseTurn").innerHTML = "";
-            setTimeout(function () {
-                document.getElementById("t-board").innerHTML
-                    = "<h3>GAME OVER!</h3> <h3>YOU WON!!!</h3>"
-            }, 3000);
+            document.getElementById("t-board").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU WON!!!</h3>";
         } else {
             //if the person player number does not match the winner id number
             //the human is told that they lost
             document.getElementById("whoseTurn").innerHTML = "";
-            document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>YOU LOST.</h3>"
+            document.getElementById("t-board").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU LOST.</h3>"
         }
     }
 }
@@ -233,7 +230,7 @@ function checkWinner(c1, c2, c3) {
     let c = document.getElementById("b" + c3).innerText;
 
     //comparing the text against each other to see if they are all the same
-    if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0) {
+    if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0 && b.localeCompare(c) === 0) {
         //checking if the letter associated with a,b and c is X or O
         //if x then winner is player 1
         //if o then winner is player 2
@@ -247,8 +244,8 @@ function checkWinner(c1, c2, c3) {
         }
     } else {
         //returns false because:
-            //a, b, or c are not the same letter
-            // a, b, or c are empty
+        //a, b, or c are not the same letter
+        // a, b, or c are empty
         return false;
     }
 }
@@ -256,6 +253,8 @@ function checkWinner(c1, c2, c3) {
 //function reset is used to reset the board when the game has ended or when the human player
 // wishes to start a new game regardless of whether the game has ended
 function reset() {
+    //resetting who won the game to zero
+    winner = 0;
     //changes the variable representing whether start game was pressed or not to false
     pressed = false;
 
