@@ -18,15 +18,18 @@ let gameEnd = false;
 // 0 if tied
 let winner = 0;
 
+let moveMade = false;
+
 //function to start the tic tac toe game
 function startGame() {
     //if pressed is false set pressed to true and start game
     if (pressed === false) {
         pressed = true;
 
-
+        //cells represents the list of board cells with the class name tb
         let cells = document.getElementsByClassName("tb");
         for (let i = 0; i < cells.length; i++) {
+            // setting the text inside the table cells to empty
             cells[i].innerText = "";
         }
 
@@ -90,12 +93,14 @@ function personTurn(turn) {
 
     //todo: not necessary? add while loop, so while cell a proper cell is not pressed run through the loop
 
-    //looping through all the cells in the board
-    for (let i = 0; i < cells.length; i++) {
-        //when a cell is clicked the move will be executed
-        document.getElementById("b" + i).onclick = function () {
-            //calls helper function to make a move when a cell has been clicked
-            executeMove(i, turn)
+    while (gameEnd === false && moveMade === false) {
+        //looping through all the cells in the board
+        for (let i = 0; i < cells.length; i++) {
+            //when a cell is clicked the move will be executed
+            document.getElementById("b" + i).onclick = function () {
+                //calls helper function to make a move when a cell has been clicked
+                executeMove(i, turn);
+            }
         }
     }
 }
@@ -107,13 +112,12 @@ function executeMove(num, turn) {
 
     //checking if the cell clicked on is empty
     //if the cell clicked is not empty the program will wait until an empty cell is clicked
-    if (document.getElementById("b" + num).innerText === "") {
+    if (document.getElementById("b" + num).innerText.localeCompare("-") === 0) {
         document.getElementById("b" + num).textContent = letter;
 
         //changes the value of whose turn it is
         //set to persons player number as the player just went
         currentTurn = comp;
-
         //calls compTurn to go to make the computers move
         compTurn(comp);
     }
@@ -230,7 +234,7 @@ function checkWinner(c1, c2, c3) {
     let c = document.getElementById("b" + c3).innerText;
 
     //comparing the text against each other to see if they are all the same
-    if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0 && b.localeCompare(c) === 0) {
+    if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0) {
         //checking if the letter associated with a,b and c is X or O
         //if x then winner is player 1
         //if o then winner is player 2
@@ -269,19 +273,19 @@ function reset() {
     document.getElementById("t-board").innerHTML = "<br>\n" +
         "    <table class=\"tb-table\">\n" +
         "        <tr class=\"row-1\">\n" +
-        "            <td id=\"b0\" class=\"tb\"></td>\n" +
-        "            <td id=\"b1\" class=\"tb\"></td>\n" +
-        "            <td id=\"b2\" class=\"tb\"></td>\n" +
+        "            <td id=\"b0\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b1\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b2\" class=\"tb\">-</td>\n" +
         "        </tr>\n" +
         "\n" +
         "        <tr class=\"row-2\">\n" +
-        "            <td id=\"b3\" class=\"tb\"></td>\n" +
-        "            <td id=\"b4\" class=\"tb\"></td>\n" +
-        "            <td id=\"b5\" class=\"tb\"></td>\n" +
+        "            <td id=\"b3\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b4\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b5\" class=\"tb\">-</td>\n" +
         "        </tr>\n" +
         "        <tr class=\"row3\">\n" +
-        "            <td id=\"b6\" class=\"tb\"></td>\n" +
-        "            <td id=\"b7\" class=\"tb\"></td>\n" +
-        "            <td id=\"b8\" class=\"tb\"></td>\n" +
+        "            <td id=\"b6\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b7\" class=\"tb\">-</td>\n" +
+        "            <td id=\"b8\" class=\"tb\">-</td>\n" +
         "        <tr>"
 }
