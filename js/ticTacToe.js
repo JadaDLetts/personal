@@ -24,23 +24,18 @@ let moveMade = false;
 function startGame() {
     //if pressed is false set pressed to true and start game
     if (pressed === false) {
+        console.log("game start");
         pressed = true;
-
-        //cells represents the list of board cells with the class name tb
-        let cells = document.getElementsByClassName("tb");
-        for (let i = 0; i < cells.length; i++) {
-            // setting the text inside the table cells to empty
-            cells[i].innerText = "";
-        }
 
         //generates a random positive integer number between 1 and 10
         let rand = Math.floor(Math.random() * (10 - 1) + 1);
+        console.log("rand: " + rand);
 
         //if the remainder of the random positive integer when mod by 2 is 0 then
         //the human is player number 2
         if (rand % 2 === 0) {
 
-            //adding on to the html element whose ID is title
+            //adding on to the html element whose Id is title
             //adds what player number the human user is to the screen
             document.getElementById("title").innerHTML += "<h3>You are Player 2</h3>";
 
@@ -53,6 +48,7 @@ function startGame() {
             comp = 1;
 
             //calling function compTurn to get the computers move
+            console.log("going to computer turn");
             compTurn(comp);
         } else {
             //adding on to the html element whose ID is title
@@ -69,6 +65,7 @@ function startGame() {
 
             //calling function personTurn to get the humans move
             //does not call checkPlayerTurn as it is known that it is the human players turn
+            console.log("going to person turn");
             personTurn(person);
         }
     }
@@ -76,17 +73,15 @@ function startGame() {
 
 //function personTurn represent the turn the human will make
 function personTurn(turn) {
-    //checks if the game ended after the players move
-    checkEnd();
+    // //checks if the game ended after the players move
+    // checkEnd();
 
     //while it is the players turn
     //the player has access to the cursor style that shows they can press a cell for their turn
     document.getElementById("t-board").style.cursor = "pointer";
 
-    if (!gameEnd) {
-        //writes that it is the humans turn to the element whose id is whoseTurn
-        document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
-    }
+    //writes that it is the humans turn to the element whose id is whoseTurn
+    document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
 
     //a list of all cells in the board
     let cells = document.getElementsByClassName("tb");
@@ -115,11 +110,18 @@ function executeMove(num, turn) {
     if (document.getElementById("b" + num).innerText.localeCompare("-") === 0) {
         document.getElementById("b" + num).textContent = letter;
 
+        //checks if the game ended after the players move
+        checkEnd();
+
         //changes the value of whose turn it is
         //set to persons player number as the player just went
-        currentTurn = comp;
-        //calls compTurn to go to make the computers move
-        compTurn(comp);
+
+        if (!gameEnd) {
+            currentTurn = comp;
+            console.log("switching to computer turn");
+            //calls compTurn to go to make the computers move
+            compTurn(comp);
+        }
     }
 }
 
@@ -138,17 +140,13 @@ function checkTurn(turn) {
 
 //function compTurn represents the turn the computer will make
 function compTurn(turn) {
-    //checks if the game ended after the players move
-    checkEnd();
-
     //if it is not the players turn they do not have access
     // to the cursor style that shows they can press a cell for their turn
     document.getElementById("t-board").style.cursor = "not-allowed";
 
-    if (!gameEnd) {
-        //writes that it is the computers turn to the element whose id is whoseTurn
-        document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
-    }
+    //writes that it is the computers turn to the element whose id is whoseTurn
+    document.getElementById("whoseTurn").innerHTML = "<h2>Enemy Turn</h2>";
+
     //random positive int generated to represent the location the computers letter will be on
     let board = Math.floor(Math.random() * 9);
 
@@ -157,22 +155,28 @@ function compTurn(turn) {
 
     //if the board cell associated with the random generated int is empty
     //the letter use by the computer will be placed on the board
-    if (document.getElementById("b" + board).innerText === "") {
+    if (document.getElementById("b" + board).innerText === "-") {
 
         //using set timeout so that the computers turn does not immediately happen
         setTimeout(function () {
             document.getElementById("b" + board).textContent = letter
         }, 1000);
 
-        //changes the value of whose turn it is
-        //set to persons player number as the computer just went
-        currentTurn = person;
+        //checks if the game ended after the players move
+        checkEnd();
 
-        //using set timeout so that after the computer makes a move it is not immediately the persons move
-        setTimeout(function () {
-            personTurn(person)
-        }, 2000);
-    } else {
+        if (!gameEnd) {
+            //changes the value of whose turn it is
+            //set to persons player number as the computer just went
+            currentTurn = person;
+
+            //using set timeout so that after the computer makes a move it is not immediately the persons move
+            setTimeout(function () {
+                personTurn(person); console.log("switching to person turn");
+            }, 2000);
+        }
+    }
+    else {
         //if the random generated board cell is full a loop is ran until an empty cell is chose
         compTurn(turn);
     }
@@ -183,15 +187,15 @@ function checkEnd() {
     //retrieving all cells in the board that have the className tb
     let boards = document.getElementsByClassName("tb");
 
-    //denotes the number of cells filled
-    let currFilled = 0;
+    //denotes the current number of cells filled
+    let currCellsFilled = 0;
 
     //loop through the list of board cells stored in variable board
     for (let i = 0; i < boards.length; i++) {
         //checking if the innerText of the cell is not empty
-        if (boards[i].innerText !== "") {
+        if (boards[i].innerText !== "-") {
             //if it is not empty then 1 is added to the variable currFilled
-            currFilled += 1;
+            currCellsFilled += 1;
         }
     }
 
@@ -204,14 +208,14 @@ function checkEnd() {
 
     //if all cells are filled then the game is over
     //TODO: update so that game is also over if player/comp wins before board is full
-    if (currFilled === 9 && gameEnd === false) {
+    if (currCellsFilled === 9 && !gameEnd) {
         //clears whose turn it is
         document.getElementById("whoseTurn").innerHTML = "";
         gameEnd = true;
         document.getElementById("t-board").innerHTML = "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
     }
     //if the game ended
-    else if (gameEnd === true) {
+    else if (gameEnd) {
         //if the winner id number matches the person player number
         if (winner === person) {
             //the human is told that they've won
@@ -233,6 +237,10 @@ function checkWinner(c1, c2, c3) {
     let b = document.getElementById("b" + c2).innerText;
     let c = document.getElementById("b" + c3).innerText;
 
+    console.log("b1: " + a );
+    console.log("b2: " + b );
+    console.log("b3: " + c );
+
     //comparing the text against each other to see if they are all the same
     if (a.localeCompare(b) === 0 && a.localeCompare(c) === 0) {
         //checking if the letter associated with a,b and c is X or O
@@ -245,6 +253,8 @@ function checkWinner(c1, c2, c3) {
         } else if (a.localeCompare("O") === 0) {
             winner = 2;
             return true;
+        } else {
+            return false;
         }
     } else {
         //returns false because:
