@@ -1,0 +1,27 @@
+body {
+    margin: 30px 50px 30px 50px;
+    background-color: black;
+
+    color: white;
+}
+
+h1 {
+    text-decoration: underline white;
+}
+
+form {
+    text-align: center;
+}
+
+h1, h3, h2 {
+    text-align: center;
+    color: white;
+}
+
+.btn-file{
+    color:white;
+}
+
+.slideDisplay {
+    display: none;
+}
