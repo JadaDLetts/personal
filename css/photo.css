@@ -1,15 +1,18 @@
 body {
-    margin: 30px 50px 30px 50px;
+    margin: 30px 40px 30px 40px;
 }
 
 img {
     width: 95%;
-
 }
 
 .slides {
     display: none;
     text-align: center;
+}
+
+.slideshow {
+    background-color: black;
 }
 
 h1 {
@@ -19,39 +22,39 @@ h1 {
 
 .numbertext {
     color: white;
-    margin: 175px 55px;
+    margin: 170px 10px;
     position: absolute;
     top: 0;
     font-size: 13px;
 }
 
-.btn-prev, .btn-nxt {
-    top: 50%;
-    position: absolute;
-    color: white;
-    font-size: 14px;
-    transition: 0.1s ease;
-    height: 40px;
-    width: 40px;
-    border-radius: 5px 5px 5px 5px;
-}
-
 .btn-prev {
-    margin-left: 40px;
+    top: 60%;
+    left: 15px;
 }
 
 .btn-nxt {
-    margin-right: 90px;
-    right: 0;
-}
-
-.btn-prev:hover, .btn-nxt:hover {
-    background-color: lightgray;
+    top: 60%;
+    right: 15px;
 }
 
 .fa-angle-left, .fa-angle-right {
     font-weight: bold;
     font-size: 30px;
+}
+.btn-prev, .btn-nxt {
+    position: fixed;
+    color: white;
+    font-size: 20px;
+    transition: 0.1s ease;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.btn-prev:hover, .btn-nxt:hover {
+    background-color: white;
+    opacity: 70%;
 }
 
 .dot {
@@ -75,10 +78,6 @@ h1 {
 .l-arrow {
     margin-left: 30px;
     transition: .5s ease;
-}
-
-.l-arrow:hover {
-    background-color: grey;
 }
 
 .div-dot {
