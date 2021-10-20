@@ -11,16 +11,19 @@
         <script type="text/javascript" src="../js/calculator.js"></script>
 
         <br>
+        <!--back arrow to main page-->
         <a class="l-arrow btn btn-light" href="../index.html">
             <i class="fa fa-arrow-left"></i>
         </a>
 
+        <!--title of page-->
         <h1 class="col">Calculator</h1>
         <br>
 
-
+        <!--beginning calculator layout by using form-->
         <form name="calculator" class="calc-form">
             <br>
+            <!--table where what is to be calculated will be displayed-->
             <table class="calc-table-head">
                 <thead>
                 <tr>
@@ -34,11 +37,11 @@
                 </thead>
             </table>
             <br>
+            <!--table where user can press buttons to input what they want to calculate-->
             <table class="calc-table">
+                <!--basic calculator outline-->
                 <tbody>
-
                 <tr>
-
                     <td><input class="calc-btn" type="button" value="1"
                                onclick="calculator.display.value+=1"></td>
                     <td><input class="calc-btn" type="button" value="2"
@@ -47,10 +50,8 @@
                                onclick="calculator.display.value+=3"></td>
                     <td><input class="calc-btn" type="button" value="+"
                                onclick="calculator.display.value+='+'"></td>
-
                 </tr>
                 <tr>
-
                     <td><input class="calc-btn" type="button" value="4"
                                onclick="calculator.display.value+=4"></td>
                     <td><input class="calc-btn" type="button" value="5"
@@ -59,10 +60,8 @@
                                onclick="calculator.display.value+=6"></td>
                     <td><input class="calc-btn" type="button" value="-"
                                onclick="calculator.display.value+='-'"></td>
-
                 </tr>
                 <tr>
-
                     <td><input class="calc-btn" type="button" value="7"
                                onclick="calculator.display.value+=7"></td>
                     <td><input class="calc-btn" type="button" value="8"
@@ -72,9 +71,7 @@
                     <td><input class="calc-btn" type="button" value="*"
                                onclick="calculator.display.value+='*'"></td>
                 </tr>
-
                 <tr>
-
                     <td><input class="calc-btn" type="button" value="c"
                                onclick="calculator.display.value=''"></td>
                     <td><input class="calc-btn" type="button" value="0"
@@ -85,27 +82,22 @@
                     <td><input class="calc-btn" type="button" value="/"
                                onclick="calculator.display.value+='/'"></td>
                 </tr>
-
                 <tr>
-
                     <td><input class="calc-btn" type="button" value="."
                                onclick="calculator.display.value+='.'"></td>
                     <td><input class="calc-btn" type="button" value="^"
                                onclick="calculator.display.value+='^'"></td>
-                    <!--                        <td><input class="calc-btn" type="button" value="!"-->
-                    <!--                                   onclick="calculator.display.value+='!'"></td>-->
                 </tr>
                 </tbody>
             </table>
             <br>
         </form>
 
-
         <br>
         <br>
         <br>
         <br>
-
+        <!--header stating one can calculate a factorial below-->
         <h2>Calculate Factorial</h2>
         <br>
 
@@ -115,6 +107,7 @@
                 <thead>
                 <tr>
                     <th>
+                        <!--where someone can input the number they want calculated via factorial-->
                         <label for="disp">
                             <input class="fact-display" type="number" name="display" id="disp"
                                    placeholder="insert number without !">
@@ -127,14 +120,15 @@
             <table>
                 <tr>
                     <td>
+                        <!--calculating factorial and replacing the value in the display box seen above-->
                         <input class="fact-btn" type="button"
                                onclick="factorial.display.value =
                                calculateFactorial(factorial.display.value)"
                                value="calculate">
                     </td>
-
                     <td class="space"></td>
                     <td>
+                        <!--used to clear the display of all values-->
                         <input class="fact-btn" type="button" onclick="factorial.display.value = ''"
                                value="clear">
                     </td>
