@@ -19,13 +19,33 @@
         <br>
 
         <form>
-            <input  class="btn-file" type="file" multiple value="Choose Photos">
+            <input class="btn-file" type="file" multiple value="Choose Photos">
             <input type="submit" value="Upload Photos">
         </form>
 
         <br>
         <br>
 
-        <h2>SlideShow Generated: </h2>
+        <h2>Generated SlideShow : </h2>
+
+        <div class="slideDisplay">
+            <!--    buttons to go to the next or previous photo-->
+            <!--    method nextSlide called with appropriate int parameter to got to next/prev slide-->
+            <div class="container-fluid" id="slideShow">
+
+            </div>
+
+            <a class="btn btn-prev btn-light" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
+            <a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
+        </div>
+
+        <!--placing dots below slideshow for users to click-->
+        <!--similar to next/prev buttons but with more range-->
+        <!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
+        <div class="div-dot" id="dot-list">
+        </div>
+
+        <!--script placed here because html needs to be generated before use-->
+        <script type="text/javascript" src="../js/generate.js"></script>
     </body>
 </html>
