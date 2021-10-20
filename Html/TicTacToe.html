@@ -9,23 +9,23 @@
         <link rel="stylesheet" href="../css/ticTacToe.css">
     </head>
     <body>
-
-
         <br>
-
         <!--back arrow to index page-->
         <a class="l-arrow btn btn-light" href="../index.html">
             <i class="fa fa-arrow-left"></i>
         </a>
 
+        <!--title of subpage-->
         <div id="title">
             <h1>Tic Tac Toe</h1>
         </div>
 
+        <!--will be used to show whose turn it is during the game-->
         <div id="whoseTurn">
         </div>
 
         <br>
+        <!--the second version of the tic-tac-toe board-->
         <div class="ticTacToe-board-2" id="t-board">
             <br>
             <table class="tb-table">
@@ -50,10 +50,8 @@
         <br>
         <br>
         <br>
-        <!--
-        <br>
-        <br>
-        <hr>
+
+        <!-- first version of tic-tac-toe board
         <div class="ticTacToe-board">
             <div id="board_0" class="t-board"></div>
             <div id="board_1" class="t-board"></div>
@@ -66,12 +64,14 @@
             <div id="board_8" class="t-board"></div>
         </div>-->
 
+        <!--buttons to denote the start of the the game or the resetting of the game-->
         <div class="buttons">
             <a class="btn btn-outline-dark btn-start col-3" onclick="startGame()">Start Game</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn btn-outline-dark btn-reset col-3" onclick="reset()">Reset</a>
         </div>
 
+        <!--script placed at the end because it requires the board to be made-->
         <script type="text/javascript" src="../js/ticTacToe.js"></script>
     </body>
 </html>
