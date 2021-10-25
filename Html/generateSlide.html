@@ -19,8 +19,8 @@
         <br>
 
         <form>
-            <input class="btn-file" type="file" multiple value="Choose Photos">
-            <input type="submit" value="Upload Photos">
+            <input id="files" class="btn-file" type="file" multiple value="Choose Photos" accept="image/*">
+            <input type="submit" onclick="basicDotFormat(1)" value="Upload Photos">
         </form>
 
         <br>
@@ -28,7 +28,7 @@
 
         <h2>Generated SlideShow : </h2>
 
-        <div class="slideDisplay">
+        <div id="slideDisplay">
             <!--    buttons to go to the next or previous photo-->
             <!--    method nextSlide called with appropriate int parameter to got to next/prev slide-->
             <div class="container-fluid" id="slideShow">
@@ -36,7 +36,8 @@
             </div>
 
             <a class="btn btn-prev btn-light" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
-            <a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
+            <a class="btn btn-nxt btn-light"
+               onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
         </div>
 
         <!--placing dots below slideshow for users to click-->
