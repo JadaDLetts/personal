@@ -18,9 +18,10 @@
         <br>
         <br>
 
-        <form>
-            <input id="files" class="btn-file" type="file" multiple value="Choose Photos" accept="image/*">
-            <input type="submit" onclick="basicDotFormat(1)" value="Upload Photos">
+        <form method="post" enctype="multipart/form-data">
+            <input id="files" name="files[]" class="btn-file" type="file" multiple value="Choose Photos" accept="image/*">
+            <input type="submit" id="upload" value="Upload Photos">
+            <input type="reset" id="reset" value="Reset">
         </form>
 
         <br>
