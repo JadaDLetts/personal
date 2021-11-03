@@ -18,10 +18,10 @@ h1, h3, h2 {
 }
 
 #slideDisplay {
-    display: none;
+    /*display: none;*/
 }
 #dot-list {
-    display: none;
+    /*display: none;*/
 }
 
 img {
@@ -52,7 +52,7 @@ img {
 }
 .btn-prev, .btn-nxt {
     position: fixed;
-    color: white;
+    color: black;
     font-size: 20px;
     transition: 0.1s ease;
     height: 40px;

@@ -6,7 +6,7 @@ let allSlides = [];
 
 let pressed = false;
 
-const url = "generated.php";
+//const url = "generated.php";
 const form = document.querySelector('form');
 
 
@@ -25,15 +25,15 @@ form.addEventListener('submit', (e) => {
     }
     
     console.log("slide length: " + allSlides.length)
-    
-    
-    fetch(url, {
-        method: 'POST',
-        body: formData,
-    }).then((response) => {
-        console.log(response);
-       // generateSlides();
-    })
+    generateSlides();
+
+    // fetch(url, {
+    //     method: 'POST',
+    //     body: formData,
+    // }).then((response) => {
+    //     console.log(response);
+    //    // generateSlides();
+    // })
 })
 
 form.addEventListener('reset', () => {
@@ -64,6 +64,7 @@ function basicSlideFormat(numSlide, src) {
 		<p class="numbertext">` + numSlide + '/' + numSlides + `</p>
 		<img src="` + src + `" alt="Photo ` + numSlide + `">
 	</div>`;
+console.log(src);
 }
 
 //function to generate a dot for all the photos submitted
@@ -85,8 +86,9 @@ function generateSlides() {
     for (let x = 0; x < allSlides.length; x++) {
         console.log("selected file: " + x);
         basicDotFormat(x);
+        let href = URL.createObjectURL(allSlides[x]);
       //  allSlides[x].src = 'images/'+x+'.jpg';
-        basicSlideFormat(x, allSlides[x].src);
+        basicSlideFormat(x, href);
     }
 }
 
