@@ -18,10 +18,10 @@ h1, h3, h2 {
 }
 
 #slideDisplay {
-    /*display: none;*/
+    display: none;
 }
 #dot-list {
-    /*display: none;*/
+    display: none;
 }
 
 img {
