@@ -1,40 +1,44 @@
-//represents the number of slides for the slideshow
-let numSlides = 0;
-let fileInput = document.getElementById('files');
+//defining a value to keep track of the number of slides in the slideshow
+let numSlides;
+//represents all elements that go by the class name slides
+let gSlides;
+//represents all elements that go by the class name dot
+let gDots;
+//defining an array of all the slides in the slideshow
 let allSlides = [];
-
-let pressed = false;
-
+//boolean representation of whether upload photos has been pressed
+let upldPressd = false;
+//represents the form used to submit photos
 const form = document.querySelector('form');
+//represents the slide currently being shown
 let index = 0;
 
-//retrieves all elements that go by the class name slides
-let gSlides;
-//getting the array of dots
-//retrieves all elements that go by the class name dot
-let gDots;
-
-
+//event listener for the submit button
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    document.getElementById("dot-list").innerHTML = "";
-    document.getElementById("slideShow").innerHTML = "";
-    allSlides = []
-    numSlides = 0;
 
-    allSlides = document.querySelector('[type=file]').files;
-    //allSlides = document.getElementById("files")
-    console.log("file length: " + allSlides.length);
-    for (let i = 0; i < allSlides.length; i++) {
-        numSlides += 1;
+    if(!upldPressd) {
+        document.getElementById("dot-list").innerHTML = "";
+        document.getElementById("slideShow").innerHTML = "";
+        allSlides = []
+        numSlides = 0;
+
+        //allSlides = document.querySelector('[type=file]').files;
+        allSlides = document.getElementById("files").files;
+        for (let i = 0; i < allSlides.length; i++) {
+            numSlides += 1;
+        }
+
+        console.log("slide length: " + allSlides.length)
+        generateSlides();
+        upldPressd = true;
+
+        console.log("")
     }
-
-    console.log("slide length: " + allSlides.length)
-    generateSlides();
 })
 
 form.addEventListener('reset', () => {
-    console.log("here")
+    upldPressd = false;
     document.getElementById("dot-list").innerHTML = "";
     document.getElementById("slideShow").innerHTML = "";
     allSlides = [];
@@ -85,9 +89,10 @@ function generateSlides() {
     gSlides = document.getElementsByClassName("slides");
     gDots = document.getElementsByClassName("dot");
 
-    showSlide(1);
+    //showSlide(1);
     //starts slideshow of photos
   //  playSlides();
+    popDisp();
 }
 
 
@@ -156,18 +161,5 @@ function showSlide(int) {
     //calling these two functions to display the proper slide
     clrDisp();
     popDisp();
-}
-
-
-//ensures that when next/prev button is clicked the next slide is properly shown
-//param int is given by the buttons
-//calls show slide to show the next slide based on param int
-function nxtSlide(int) {
-    showSlide(index += int);
-}
-
-
-function saveSlideShow() {
-
 }
 
