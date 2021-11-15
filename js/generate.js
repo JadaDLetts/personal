@@ -5,23 +5,27 @@ let gSlides;
 //represents all elements that go by the class name dot
 let gDots;
 //defining an array of all the slides in the slideshow
-let allSlides = [];
+let allSlides;
 //boolean representation of whether upload photos has been pressed
 let upldPressd = false;
 //represents the form used to submit photos
-const form = document.querySelector('form');
+const form1 = document.querySelector('#form1');
+const form2 = document.querySelector('#form2');
 //represents the slide currently being shown
 let index = 0;
+let delay = 0;
+let num;
 
-//event listener for the submit button
-form.addEventListener('submit', (e) => {
+form1.addEventListener('submit', (e) => {
     e.preventDefault();
+    num = document.getElementById("t_delay");
+    delay = num.options.selectedIndex;
+})
 
+form2.addEventListener('submit', (e) => {
+    e.preventDefault();
     if(!upldPressd) {
-        document.getElementById("dot-list").innerHTML = "";
-        document.getElementById("slideShow").innerHTML = "";
-        allSlides = []
-        numSlides = 0;
+       reset();
 
         //allSlides = document.querySelector('[type=file]').files;
         allSlides = document.getElementById("files").files;
@@ -37,22 +41,18 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-form.addEventListener('reset', () => {
+form2.addEventListener('reset', () => {
+    reset();
+})
+
+function reset(){
     upldPressd = false;
     document.getElementById("dot-list").innerHTML = "";
     document.getElementById("slideShow").innerHTML = "";
     allSlides = [];
     numSlides = 0;
     console.log(allSlides.length);
-})
-
-// fileInput.onchange = () => {
-//     const selectedFiles = [...fileInput.files];
-//     console.log(selectedFiles);
-//  allSlides = f;
-//     console.log(allSlides);
-
-// }
+}
 
 //function to generate a slide for all photos submitted
 function basicSlideFormat(numSlide, src) {
@@ -69,7 +69,7 @@ function basicSlideFormat(numSlide, src) {
 function basicDotFormat(numDot) {
     document.getElementById("dot-list").style.display = "block";
     document.getElementById("dot-list").innerHTML +=
-        `<span class="dot" onClick="currentSlide(` + numDot + `)"></span>`;
+        `<span class="dot active" onClick="currentSlide(` + numDot + `)"></span>`;
     console.log(document.getElementById("dot-list").innerHTML.toString());
 }
 
@@ -89,10 +89,10 @@ function generateSlides() {
     gSlides = document.getElementsByClassName("slides");
     gDots = document.getElementsByClassName("dot");
 
-    //showSlide(1);
+    document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
     //starts slideshow of photos
   //  playSlides();
-    popDisp();
+   // popDisp();
 }
 
 
