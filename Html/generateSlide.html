@@ -18,8 +18,27 @@
         <br>
         <br>
 
-        <form method="post" enctype="multipart/form-data">
-            <input id="files" class="btn-file" type="file" multiple value="Choose Photos" accept="image/*">
+
+        <form id="form1">
+            <input id="files" class="btn-file" type="file" multiple accept="image/*">
+            <select type="select" id="t_delay">
+                <option value="None">None</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> s.
+            <input type="submit" id="delay_sub" value="Submit Time">
+        </form>
+        <br>
+        <form id="form2">
+
             <input type="submit" id="upload" value="Upload Photos">
             <input type="reset" id="reset" value="Reset">
         </form>
@@ -36,7 +55,8 @@
 
             </div>
 
-            <a class="btn btn-prev btn-light" onclick="nxtSlide(-1)"><i class="fa fa-angle-left"></i></a>
+            <a class="btn btn-prev btn-light" onclick="nxtSlide(-1)"><i
+                    class="fa fa-angle-left"></i></a>
             <a class="btn btn-nxt btn-light"
                onclick="nxtSlide(1)"><i class="fa fa-angle-right"></i></a>
         </div>
