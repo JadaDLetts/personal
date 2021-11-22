@@ -134,7 +134,7 @@ function playSlides() {
     showSlide(index);
 
     //changing the image every 7 seconds
-    setTimeout(showSlides, 7000);
+    setTimeout(showSlides, delay*1000);
     //increasing the sIndex so that the slideshow does not stay on one image
     //setTimeout will not increment the sIndex
     index++;
