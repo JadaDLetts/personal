@@ -1,10 +1,10 @@
-//defining a value to keep track of the number of slides in the slideshow
+//defining a value to keep track of the number of slides in the slide show
 let numSlides;
 //represents all elements that go by the class name slides
 let gSlides;
 //represents all elements that go by the class name dot
 let gDots;
-//defining an array of all the slides in the slideshow
+//defining an array of all the slides in the slide show
 let allSlides;
 //boolean representation of whether upload photos has been pressed
 let upldPressd = false;
@@ -20,7 +20,7 @@ form1.addEventListener('submit', (e) => {
     e.preventDefault();
     num = document.getElementById("t_delay");
     delay = num.options.selectedIndex;
-})
+});
 
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -33,17 +33,17 @@ form2.addEventListener('submit', (e) => {
             numSlides += 1;
         }
 
-        console.log("slide length: " + allSlides.length)
+        console.log("slide length: " + allSlides.length);
         generateSlides();
         upldPressd = true;
 
         console.log("")
     }
-})
+});
 
 form2.addEventListener('reset', () => {
     reset();
-})
+});
 
 function reset(){
     upldPressd = false;
@@ -90,7 +90,7 @@ function generateSlides() {
     gDots = document.getElementsByClassName("dot");
 
     document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
-    //starts slideshow of photos
+    //starts slide show of photos
   //  playSlides();
    // popDisp();
 }
@@ -129,13 +129,13 @@ function checkIndex() {
     }
 }
 
-//used to show all of the photos in the slideshow on a timer
+//used to show all of the photos in the slide show on a timer
 function playSlides() {
     showSlide(index);
 
     //changing the image every 7 seconds
     setTimeout(showSlides, delay*1000);
-    //increasing the sIndex so that the slideshow does not stay on one image
+    //increasing the sIndex so that the slide show does not stay on one image
     //setTimeout will not increment the sIndex
     index++;
 }
@@ -163,3 +163,6 @@ function showSlide(int) {
     popDisp();
 }
 
+function nxtSlide(){
+
+}
