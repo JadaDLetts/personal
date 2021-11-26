@@ -24,8 +24,8 @@ form1.addEventListener('submit', (e) => {
 
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(!upldPressd) {
-       reset();
+    if (!upldPressd) {
+        reset();
 
         //allSlides = document.querySelector('[type=file]').files;
         allSlides = document.getElementById("files").files;
@@ -45,7 +45,7 @@ form2.addEventListener('reset', () => {
     reset();
 });
 
-function reset(){
+function reset() {
     upldPressd = false;
     document.getElementById("dot-list").innerHTML = "";
     document.getElementById("slideShow").innerHTML = "";
@@ -91,8 +91,8 @@ function generateSlides() {
 
     document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
     //starts slide show of photos
-  //  playSlides();
-   // popDisp();
+    //  playSlides();
+    // popDisp();
 }
 
 
@@ -134,7 +134,7 @@ function playSlides() {
     showSlide(index);
 
     //changing the image every 7 seconds
-    setTimeout(showSlides, delay*1000);
+    setTimeout(showSlides, delay * 1000);
     //increasing the sIndex so that the slide show does not stay on one image
     //setTimeout will not increment the sIndex
     index++;
@@ -148,7 +148,6 @@ function currentSlide(int) {
     showSlide(index);
 }
 
-//
 //used to show individual slides
 //parameter int represents the number of the slide to be shown
 function showSlide(int) {
@@ -163,6 +162,7 @@ function showSlide(int) {
     popDisp();
 }
 
-function nxtSlide(){
-
+function nxtSlide(int) {
+    index = index += int;
+    showSlide(index);
 }
