@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Photography Slideshow</title>
-    <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/photo.css">
-</head>
-<body>
-<br>
-<!--back arrow to index page-->
-<a class="l-arrow btn btn-dark" href="../index.html">
-    <i class="fa fa-arrow-left"></i>
-</a>
+	<head>
+		<meta charset="UTF-8">
+		<title>Photography Slideshow</title>
+		<script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/photo.css">
+	</head>
+	<body>
+		<br>
+		<!--back arrow to index page-->
+		<a class="l-arrow btn btn-dark" href="../index.html">
+			<i class="fa fa-arrow-left"></i>
+		</a>
 
-<!--Title of subpage-->
-<h1>Photography Project SlideShow</h1>
+		<!--Title of subpage-->
+		<h1>Photography Project SlideShow</h1>
 
-<br>
+		<br>
 
-<!--start of slideshow-->
-<div class="slideshow">
-    <!--starting class to denote the slides-->
-    <div class="slides ">
-        <p class="numText">1 / 10</p>
-        <img src="../pics/1.jpg" alt="Photo 1">
-    </div>
+		<!--start of slideshow-->
+		<div class="slideshow">
+			<!--starting class to denote the slides-->
+			<div class="slides ">
+				<p class="numText">1 / 10</p>
+				<img src="../pics/1.jpg" alt="Photo 1">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">2 / 10</p>
-        <img src="../pics/2.jpg" alt="Photo 2">
-    </div>
+			<div class="slides ">
+				<p class="numText">2 / 10</p>
+				<img src="../pics/2.jpg" alt="Photo 2">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">3 / 10</p>
-        <img src="../pics/3.jpg" alt="Photo 3">
-    </div>
+			<div class="slides ">
+				<p class="numText">3 / 10</p>
+				<img src="../pics/3.jpg" alt="Photo 3">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">4 / 10</p>
-        <img src="../pics/4.jpg" alt="Photo 4">
-    </div>
+			<div class="slides ">
+				<p class="numText">4 / 10</p>
+				<img src="../pics/4.jpg" alt="Photo 4">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">5 / 10</p>
-        <img src="../pics/5.jpg" alt="Photo 5">
-    </div>
+			<div class="slides ">
+				<p class="numText">5 / 10</p>
+				<img src="../pics/5.jpg" alt="Photo 5">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">6 / 10</p>
-        <img src="../pics/6.jpg" alt="Photo 6">
-    </div>
+			<div class="slides ">
+				<p class="numText">6 / 10</p>
+				<img src="../pics/6.jpg" alt="Photo 6">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">7 / 10</p>
-        <img src="../pics/7.jpg" alt="Photo 7">
-    </div>
+			<div class="slides ">
+				<p class="numText">7 / 10</p>
+				<img src="../pics/7.jpg" alt="Photo 7">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">8 / 10</p>
-        <img src="../pics/8.jpg" alt="Photo 8">
-    </div>
+			<div class="slides ">
+				<p class="numText">8 / 10</p>
+				<img src="../pics/8.jpg" alt="Photo 8">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">9 / 10</p>
-        <img src="../pics/9.jpg" alt="Photo 9">
-    </div>
+			<div class="slides ">
+				<p class="numText">9 / 10</p>
+				<img src="../pics/9.jpg" alt="Photo 9">
+			</div>
 
-    <div class="slides ">
-        <p class="numText">10 / 10</p>
-        <img src="../pics/10.jpg" alt="Photo 10">
-    </div>
+			<div class="slides ">
+				<p class="numText">10 / 10</p>
+				<img src="../pics/10.jpg" alt="Photo 10">
+			</div>
 
-    <!--buttons to go to the next or previous photo-->
-    <!--method nextSlide called with appropriate int parameter to got to next/prev slide-->
-    <a class="btn btn-prev" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
-    <a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
-</div>
+			<!--buttons to go to the next or previous photo-->
+			<!--method nextSlide called with appropriate int parameter to got to next/prev slide-->
+			<a class="btn btn-prev" onclick="nextSlide(-1)"><i class="fa fa-angle-left"></i></a>
+			<a class="btn btn-nxt" onclick="nextSlide(1)"><i class="fa fa-angle-right"></i></a>
+		</div>
 
-<!--placing dots below slideshow for users to click-->
-<!--similar to next/prev buttons but with more range-->
-<!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
-<div class="div-dot">
-    <span class="dot" onclick="currentSlide(0)"></span>
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-    <span class="dot" onclick="currentSlide(4)"></span>
-    <span class="dot" onclick="currentSlide(5)"></span>
-    <span class="dot" onclick="currentSlide(6)"></span>
-    <span class="dot" onclick="currentSlide(7)"></span>
-    <span class="dot" onclick="currentSlide(8)"></span>
-    <span class="dot" onclick="currentSlide(9)"></span>
-</div>
-</body>
-<script type="text/javascript" src="../js/photography.js"></script>
+		<!--placing dots below slideshow for users to click-->
+		<!--similar to next/prev buttons but with more range-->
+		<!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
+		<div class="div-dot">
+			<span class="dot" onclick="currentSlide(0)"></span>
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(4)"></span>
+			<span class="dot" onclick="currentSlide(5)"></span>
+			<span class="dot" onclick="currentSlide(6)"></span>
+			<span class="dot" onclick="currentSlide(7)"></span>
+			<span class="dot" onclick="currentSlide(8)"></span>
+			<span class="dot" onclick="currentSlide(9)"></span>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/photography.js"></script>
 </html>
