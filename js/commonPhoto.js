@@ -1,5 +1,5 @@
-let slides = document.getElementsByClassName("slides");
-let dots = document.getElementsByClassName("dot");
+slides = document.getElementsByClassName("slides");
+dots = document.getElementsByClassName("dot");
 
 
 //function to help display the current slide
