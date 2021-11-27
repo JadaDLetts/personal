@@ -1,7 +1,3 @@
-slides = document.getElementsByClassName("slides");
-dots = document.getElementsByClassName("dot");
-
-
 //function to help display the current slide
 function clrDisplay() {
     //for loop to make sure only one photo can be displayed at one time
