@@ -95,40 +95,6 @@ function generateSlides() {
     // popDisp();
 }
 
-
-//function to help display the current slide
-function clrDisp() {
-    //for loop to make sure only one photo can be displayed at one time
-    //will not have to worry about finding which picture is currently being displayed
-    for (let i = 0; i < gSlides.length; i++) {
-        gSlides[i].style.display = "none";
-    }
-
-    //for loop to make sure only one dot can be highlighted at one time
-    //will not have to worry about finding which dot is currently being highlighted
-    for (let i = 0; i < gDots.length; i++) {
-        gDots[i].className = gDots[i].className.replace(" active", "");
-    }
-}
-
-//function to help  display the current slide
-function popDisp() {
-    //displays the slide selected
-    gSlides[index].style.display = "block";
-    //displays the dot selected/ the dot associated with the slide currently displayed
-    gDots[index].className += " active";
-}
-
-//function to check what slide the program is currently on
-function checkIndex() {
-    //checking that the current sIndex is within range of the number of photos
-    if (index >= gSlides.length) {
-        index = 0
-    } else if (index < 0) {
-        index = gSlides.length - 1
-    }
-}
-
 //used to show all of the photos in the slide show on a timer
 function playSlides() {
     showSlide(index);
@@ -138,31 +104,4 @@ function playSlides() {
     //increasing the sIndex so that the slide show does not stay on one image
     //setTimeout will not increment the sIndex
     index++;
-}
-
-//changes the current slide based on the dot pressed
-//param int is given by the dot pressed
-//calls show slide to ensure that the photo associated with the dot is shown
-function currentSlide(int) {
-    index = int;
-    showSlide(index);
-}
-
-//used to show individual slides
-//parameter int represents the number of the slide to be shown
-function showSlide(int) {
-    //initiating sIndex equal to the given parameter
-    index = int;
-
-    //checking the index of the slide
-    checkIndex();
-
-    //calling these two functions to display the proper slide
-    clrDisp();
-    popDisp();
-}
-
-function nxtSlide(int) {
-    index = index += int;
-    showSlide(index);
 }
