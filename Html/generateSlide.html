@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <Title>Generate SlideShow</Title>
-        <script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../js/generate.js"></script>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/generate.css">
-    </head>
-    <body>
-        <br>
-        <!--back arrow to index page-->
-        <a class="l-arrow btn btn-light" href="../index.html">
-            <i class="fa fa-arrow-left"></i>
-        </a>
+	<head>
+		<meta charset="UTF-8">
+		<Title>Generate SlideShow</Title>
+		<script src="https://kit.fontawesome.com/4b5542137e.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/generate.css">
+	</head>
+	<body>
+		<br>
+		<!--back arrow to index page-->
+		<a class="l-arrow btn btn-light" href="../index.html">
+			<i class="fa fa-arrow-left"></i>
+		</a>
 
-        <h1>Generate Your Own SlideShow</h1>
-        <br>
-        <br>
+		<h1>Generate Your Own SlideShow</h1>
+		<br>
+		<br>
 
 
-        <form id="form1">
-            <input id="files" class="btn-file" type="file" multiple accept="image/*">
-            <select type="select" id="t_delay">
-                <option value="None">None</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select> <label>sec.</label>
-            <input type="submit" id="delay_sub" value="Submit Time">
-        </form>
-        <br>
-        <form id="form2">
+		<form id="form1">
+			<input id="files" class="btn-file" type="file" multiple accept="image/*">
+			<select type="select" id="t_delay">
+				<option value="None">None</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select> <label for="t_delay">sec.</label>
+			<input type="submit" id="delay_sub" value="Submit Time">
+		</form>
+		<br>
+		<form id="form2">
 
-            <input type="submit" id="upload" value="Upload Photos">
-            <input type="reset" id="reset" value="Reset">
-        </form>
+			<input type="submit" id="upload" value="Upload Photos">
+			<input type="reset" id="reset" value="Reset">
+		</form>
 
-        <br>
-        <br>
+		<br>
+		<br>
 
-        <h2>Generated SlideShow : </h2>
+		<h2>Generated SlideShow : </h2>
 
-        <div id="slideDisplay">
-            <!--    buttons to go to the next or previous photo-->
-            <!--    method nextSlide called with appropriate int parameter to got to next/prev slide-->
-            <div class="container-fluid" id="slideShow">
+		<div id="slideDisplay">
+			<!--buttons to go to the next or previous photo-->
+			<!--method nextSlide called with appropriate int parameter to got to next/prev slide-->
+			<div class="container-fluid" id="slideShow">
 
-            </div>
+			</div>
 
-            <a class="btn btn-prev btn-light" onclick="nxtSlide(-1)"><i
-                    class="fa fa-angle-left"></i></a>
-            <a class="btn btn-nxt btn-light"
-               onclick="nxtSlide(1)"><i class="fa fa-angle-right"></i></a>
-        </div>
+			<a class="btn btn-prev btn-light" onclick="nxtSlide(-1)"><i
+					class="fa fa-angle-left"></i></a>
+			<a class="btn btn-nxt btn-light"
+			   onclick="nxtSlide(1)"><i class="fa fa-angle-right"></i></a>
+		</div>
 
-        <!--placing dots below slideshow for users to click-->
-        <!--similar to next/prev buttons but with more range-->
-        <!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
-        <div class="div-dot" id="dot-list">
-        </div>
+		<!--placing dots below slideshow for users to click-->
+		<!--similar to next/prev buttons but with more range-->
+		<!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
+		<div class="div-dot" id="dot-list">
+		</div>
 
-        <!--script placed here because html needs to be generated before use-->
+		<!--script placed here because HTML needs to be generated before use-->
+		<script type="text/javascript" src="../js/generate.js"></script>
 
-    </body>
+	</body>
 </html>
