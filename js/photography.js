@@ -8,10 +8,8 @@ let slides = document.getElementsByClassName("slides");
 //retrieves all elements that go by the class name dot
 let dots = document.getElementsByClassName("dot");
 
-
 //starts slideshow of photos
 showSlides();
-
 
 //used to show all of the photos in the slideshow on a timer
 function showSlides() {
@@ -21,7 +19,7 @@ function showSlides() {
 
 	//changing the image every 7 seconds
 	setTimeout(showSlides, 7000);
-	//increasing the sIndex so that the slideshow does not stay on one image
+	//increasing the index so that the slideshow does not stay on one image
 	//setTimeout will not increment the sIndex
 
 }
