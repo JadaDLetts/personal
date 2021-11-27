@@ -25,19 +25,19 @@ form1.addEventListener('submit', (e) => {
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!upldPressd) {
-        reset();
 
         //allSlides = document.querySelector('[type=file]').files;
         allSlides = document.getElementById("files").files;
-        for (let i = 0; i < allSlides.length; i++) {
-            numSlides += 1;
+        if (allSlides.length !== 0) {
+            for (let i = 0; i < allSlides.length; i++) {
+                numSlides += 1;
+            }
+            console.log("slide length: " + allSlides.length);
+            generateSlides();
+            upldPressd = true;
+        } else {
+            reset();
         }
-
-        console.log("slide length: " + allSlides.length);
-        generateSlides();
-        upldPressd = true;
-
-        console.log("")
     }
 });
 
@@ -69,7 +69,7 @@ function basicSlideFormat(numSlide, src) {
 function basicDotFormat(numDot) {
     document.getElementById("dot-list").style.display = "block";
     document.getElementById("dot-list").innerHTML +=
-        `<span class="dot active" onClick="currentSlide(` + numDot + `)"></span>`;
+        `<span class="dot " onClick="currentSlide(` + numDot + `)"></span>`;
     console.log(document.getElementById("dot-list").innerHTML.toString());
 }
 
