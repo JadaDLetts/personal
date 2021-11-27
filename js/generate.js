@@ -1,9 +1,9 @@
 //defining a value to keep track of the number of slides in the slide show
 let numSlides;
 //represents all elements that go by the class name slides
-let gSlides;
+let slides;
 //represents all elements that go by the class name dot
-let gDots;
+let dots;
 //defining an array of all the slides in the slide show
 let allSlides;
 //boolean representation of whether upload photos has been pressed
@@ -86,8 +86,8 @@ function generateSlides() {
         basicSlideFormat(y, href);
     }
 
-    gSlides = document.getElementsByClassName("slides");
-    gDots = document.getElementsByClassName("dot");
+    slides = document.getElementsByClassName("slides");
+    dots = document.getElementsByClassName("dot");
 
     document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
     //starts slide show of photos
