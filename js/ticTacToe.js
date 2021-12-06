@@ -27,26 +27,36 @@ function reset() {
     //this line ensures that the element with the id whoseTurn displays nothing
     // as it is no ones turn when the game has not started
     document.getElementById("whoseTurn").innerHTML = "";
-
-    //generates a blank board
-    document.getElementById("t-board").innerHTML = "<br>\n" +
-        "    <table class=\"tb-table\">\n" +
-        "        <tr class=\"row-1\">\n" +
-        "            <td id=\"b0\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b1\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b2\" class=\"tb\">-</td>\n" +
-        "        </tr>\n" +
-        "\n" +
-        "        <tr class=\"row-2\">\n" +
-        "            <td id=\"b3\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b4\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b5\" class=\"tb\">-</td>\n" +
-        "        </tr>\n" +
-        "        <tr class=\"row3\">\n" +
-        "            <td id=\"b6\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b7\" class=\"tb\">-</td>\n" +
-        "            <td id=\"b8\" class=\"tb\">-</td>\n" +
-        "        <tr>"
+    
+    //a list of all cells in the board
+    let cells = document.getElementsByClassName("tb");
+    
+    for (let i = 0; i < cells.length; i++) {
+        //when a cell is clicked the move will be executed
+        document.getElementById("b" + i).innerText = "-";
+    }
+    
+    document.getElementById("gameResult").textContent = "";
+    
+    // //generates a blank board
+    // document.getElementById("t-board").innerHTML = "<br>\n" +
+    //     "    <table class=\"tb-table\">\n" +
+    //     "        <tr class=\"row-1\">\n" +
+    //     "            <td id=\"b0\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b1\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b2\" class=\"tb\">-</td>\n" +
+    //     "        </tr>\n" +
+    //     "\n" +
+    //     "        <tr class=\"row-2\">\n" +
+    //     "            <td id=\"b3\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b4\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b5\" class=\"tb\">-</td>\n" +
+    //     "        </tr>\n" +
+    //     "        <tr class=\"row3\">\n" +
+    //     "            <td id=\"b6\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b7\" class=\"tb\">-</td>\n" +
+    //     "            <td id=\"b8\" class=\"tb\">-</td>\n" +
+    //     "        <tr>"
 }
 
 //function to start the tic tac toe game
@@ -119,21 +129,21 @@ function enemyTurn() {
     if (document.getElementById("b" + cell).innerText.localeCompare("-") === 0) {
         //using set timeout so that the computers turn does not immediately show up on the screen
         setTimeout(function () {
-            document.getElementById("b" + cell).textContent = letter;
+            document.getElementById("b" + cell).innerText = letter;
             checkEnd();
+    
+            if (!gameEnd) {
+                //changes the value of whose turn it is
+                //set to persons player number as the computer just went
+                currentTurn = person;
+        
+                //using set timeout so that after the computer makes a move it is not immediately the persons move
+                setTimeout(function () {
+                    playerTurn();
+                }, 2000);
+            }
+            
         }, 1200);
-        if (!gameEnd) {
-            //changes the value of whose turn it is
-            //set to persons player number as the computer just went
-            currentTurn = person;
-
-            //using set timeout so that after the computer makes a move it is not immediately the persons move
-            setTimeout(function () {
-                playerTurn();
-            }, 2000);
-        } else {
-
-        }
     } else {
         //if the random generated board cell is full a loop is ran until an empty cell is chose
         enemyTurn();
@@ -240,19 +250,19 @@ function checkEnd() {
         if (winner === person) {
             //the human is told that they've won
             document.getElementById("whoseTurn").innerHTML = "";
-            document.getElementById("t-board").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU WON!!!</h3>";
+            document.getElementById("gameResult").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU WON!!!</h3>";
         } else {
             //if the person player number does not match the winner id number
             //the human is told that they lost
             document.getElementById("whoseTurn").innerHTML = "";
-            document.getElementById("t-board").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU LOST.</h3>"
+            document.getElementById("gameResult").innerHTML += "<h3>GAME OVER!</h3> <h3>YOU LOST.</h3>"
         }
     }    //if all cells are filled then the game is over
     else if (currCellsFilled === 9 && !gameEnd) {
         //clears whose turn it is
         gameEnd = true;
         document.getElementById("whoseTurn").innerHTML = "";
-        document.getElementById("t-board").innerHTML += "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
+        document.getElementById("gameResult").innerHTML += "<h3>GAME OVER!</h3> <h3>IT'S A TIE</h3>"
     }
 }
 
