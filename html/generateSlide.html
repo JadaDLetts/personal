@@ -18,10 +18,11 @@
 		<br>
 		<br>
 
-		<form id="form1">
+		<form id="form">
 			<input id="files" class="btn-file" type="file" multiple accept="image/*">
-			<select type="select" id="t_delay">
-				<option value="None">None</option>
+				<input list="t_delay">
+			<datalist id="t_delay">
+				<option value="0">None</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -32,11 +33,9 @@
 				<option value="8">8</option>
 				<option value="9">9</option>
 				<option value="10">10</option>
-			</select> <label for="t_delay">sec.</label>
-			<input type="submit" id="delay_sub" value="Submit Time">
-		</form>
-		<br>
-		<form id="form2">
+			</datalist> <label for="t_delay">sec.</label>
+<!--			<input type="submit" id="delay_sub" value="Submit Time">-->
+<br>
 
 			<input type="submit" id="upload" value="Upload Photos">
 			<input type="reset" id="reset" value="Reset">
