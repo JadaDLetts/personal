@@ -16,33 +16,41 @@ let index = 0;
 let delay = 0;
 let num;
 
-form1.addEventListener('submit', (e) => {
-    e.preventDefault();
-    num = document.getElementById("t_delay");
-    delay = num.options.selectedIndex;
-});
+// form1.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     num = document.getElementById("t_delay");
+//     delay = num.options.selectedIndex;
+// });
 
-form2.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!upldPressd) {
+        eventHelp();
 
-        //allSlides = document.querySelector('[type=file]').files;
-        allSlides = document.getElementById("files").files;
-        if (allSlides.length !== 0) {
-            for (let i = 0; i < allSlides.length; i++) {
-                numSlides += 1;
-            }
-            console.log("slide length: " + allSlides.length);
-            generateSlides();
-            upldPressd = true;
-        } else {
-            reset();
-        }
+    } else {
+        reset();
+        eventHelp();
     }
 });
 
-form2.addEventListener('reset', () => {
-    reset();
+function eventHelp() {
+    num = document.getElementById("t_delay");
+    //allSlides = document.querySelector('[type=file]').files;
+    allSlides = document.getElementById("files").files;
+    if (allSlides.length !== 0) {
+        for (let i = 0; i < allSlides.length; i++) {
+            numSlides += 1;
+        }
+        console.log("slide length: " + allSlides.length);
+        generateSlides();
+        upldPressd = true;
+    }
+    delay = document.querySelector("#t_delay");
+    console.log("delay: " + delay.value);
+}
+
+form.addEventListener('reset', () => {
+        reset();
 });
 
 function reset() {
@@ -74,9 +82,6 @@ function basicDotFormat(numDot) {
 }
 
 function generateSlides() {
-    console.log(allSlides.length);
-    console.log("generate");
-
     // console.log(selectedFiles.length)
     for (let x = 0; x < allSlides.length; x++) {
         let y = x + 1;
@@ -90,9 +95,6 @@ function generateSlides() {
     dots = document.getElementsByClassName("dot");
 
     document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
-    //starts slide show of photos
-    //  playSlides();
-    // popDisp();
 }
 
 //used to show all of the photos in the slide show on a timer
