@@ -26,10 +26,12 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!upldPressd) {
         eventHelp();
+        playSlides();
 
     } else {
         reset();
         eventHelp();
+        playSlides();
     }
 });
 
@@ -64,7 +66,7 @@ function reset() {
 
 //function to generate a slide for all photos submitted
 function basicSlideFormat(numSlide, src) {
-    document.getElementById("slideShow").style.display = "block";
+   // document.getElementById("slideShow").style.display = "block";
     document.getElementById("slideShow").innerHTML +=
         `<div class="slides ">
 		<p class="numbertext">` + numSlide + '/' + numSlides + `</p>
@@ -75,7 +77,7 @@ function basicSlideFormat(numSlide, src) {
 
 //function to generate a dot for all the photos submitted
 function basicDotFormat(numDot) {
-    document.getElementById("dot-list").style.display = "block";
+   // document.getElementById("dot-list").style.display = "block";
     document.getElementById("dot-list").innerHTML +=
         `<span class="dot " onClick="currentSlide(` + numDot + `)"></span>`;
     console.log(document.getElementById("dot-list").innerHTML.toString());
@@ -94,16 +96,82 @@ function generateSlides() {
     slides = document.getElementsByClassName("slides");
     dots = document.getElementsByClassName("dot");
 
-    document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
+    //document.getElementById("slideDisplay").style.display = "initial";    //showSlide(1);
 }
 
 //used to show all of the photos in the slide show on a timer
 function playSlides() {
-    showSlide(index);
+    popDisp();
+    //changing the image every input number of seconds
+    if(delay===0){
+    }else {
+        setTimeout(playSlides, delay * 1000);
+        //increasing the sIndex so that the slide show does not stay on one image
+        //setTimeout will not incremen
+        // t the sIndex
+        index++;
+    }
+}
 
-    //changing the image every 7 seconds
-    setTimeout(showSlides, delay * 1000);
-    //increasing the sIndex so that the slide show does not stay on one image
-    //setTimeout will not increment the sIndex
-    index++;
+//function to help display the current slide
+function clrDisplay() {
+    //for loop to make sure only one photo can be displayed at one time
+    //will not have to worry about finding which picture is currently being displayed
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    //for loop to make sure only one dot can be highlighted at one time
+    //will not have to worry about finding which dot is currently being highlighted
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+}
+
+//function to help  display the current slide
+function popDisp() {
+    //displays the slide selected
+    slides[index].style.display = "block";
+    //displays the dot selected/ the dot associated with the slide currently displayed
+    dots[index].className += " active";
+}
+
+//function to check what slide the program is currently on
+function checkSIndex() {
+    //checking that the current sIndex is within range of the number of photos
+    if (index >= slides.length) {
+        index = 0
+    } else if (index < 0) {
+        index = slides.length - 1
+    }
+}
+
+//changes the current slide based on the dot pressed
+//param int is given by the dot pressed
+//calls show slide to ensure that the photo associated with the dot is shown
+function currentSlide(int) {
+    index = int;
+    showSlide(index);
+}
+
+//
+//used to show individual slides
+//parameter int represents the number of the slide to be shown
+function showSlide(int) {
+    //initiating sIndex equal to the given parameter
+    index = int;
+
+    //checking the index of the slide
+    checkSIndex();
+
+    //calling these two functions to display the proper slide
+    clrDisplay();
+    popDisp();
+}
+
+//ensures that when next/prev button is clicked the next slide is properly shown
+//param int is given by the buttons
+//calls show slide to show the next slide based on param int
+function nxtSlide(int) {
+    showSlide(index += int);
 }
