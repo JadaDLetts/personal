@@ -62,6 +62,7 @@ function calculateHelp(s) {
 
 //calculates the result of the array of characters given by calculateHelp(String s)
 function calculate(chars) {
+    //parsing through input string
     let calc = calculateHelp(chars);
     // --- Perform a calculation expressed as an array of operators and numbers
     let ops = [{'^': (a, b) => Math.pow(a, b)},
@@ -70,6 +71,7 @@ function calculate(chars) {
             {'!': (a) => a * a}],
         newCalc = [],
         currentOp;
+    //looping through every operation in ops list
     for (let i = 0; i < ops.length; i++) {
         for (let j = 0; j < calc.length; j++) {
             if (ops[i][calc[j]]) {
@@ -86,6 +88,7 @@ function calculate(chars) {
         calc = newCalc;
         newCalc = [];
     }
+    //
     if (calc.length > 1) {
         console.log('Error: unable to resolve calculation');
         return calc;
