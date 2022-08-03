@@ -13,6 +13,9 @@ let gameEnd = false;
 // 0 if tied
 let winner = 0;
 
+let canPress=true;
+// var cells;
+
 //function reset is used to reset the board when the game has ended or when the human player
 // wishes to start a new game regardless of whether the game has ended
 function reset() {
@@ -69,6 +72,7 @@ function startGame() {
         //generates a random positive integer number between 1 and 10
         let rand = Math.floor(Math.random() * (10 - 1) + 1);
         console.log("rand: " + rand);
+        // cells = document.getElementsByClassName("tb");
 
         //if the remainder of the random positive integer when mod by 2 is 0 then
         //the human is player number 2
@@ -130,6 +134,7 @@ function enemyTurn() {
         //using set timeout so that the computers turn does not immediately show up on the screen
         setTimeout(function () {
             document.getElementById("b" + cell).innerText = letter;
+            document.getElementById("b" + cell).disabled = true;
             checkEnd();
     
             if (!gameEnd) {
@@ -161,7 +166,7 @@ function playerTurn() {
     document.getElementById("whoseTurn").innerHTML = "<h2>Your Turn</h2>";
 
     //a list of all cells in the board
-    let cells = document.getElementsByClassName("tb");
+
 
     for (let i = 0; i < cells.length; i++) {
         //when a cell is clicked the move will be executed
