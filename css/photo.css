@@ -3,7 +3,8 @@ body {
 }
 
 img {
-    width: 95%;
+    width: 75%;
+    margin-top: 20px;
 }
 
 .slides {
@@ -12,7 +13,8 @@ img {
 }
 
 .slideshow {
-    background-color: black;
+    background-color: darkgray;
+    text-align: center;
 }
 
 h1 {
@@ -43,7 +45,6 @@ h1 {
     font-size: 30px;
 }
 .btn-prev, .btn-nxt {
-    position: fixed;
     color: white;
     font-size: 20px;
     transition: 0.1s ease;

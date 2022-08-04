@@ -5,12 +5,20 @@ h1.itt-title, h2.hotline-title{
 body {
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 50px;
 }
 div.hotline{
     margin-left: 30px;
     margin-right: 30px;
 }
-
 p.helpline{
     margin-left: 30px;
+}
+h4.sa-statement{
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 20px;
+}
+div#alphabet{
+    text-align: center;
 }
