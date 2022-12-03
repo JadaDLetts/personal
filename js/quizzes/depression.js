@@ -100,8 +100,8 @@ const questions = [
     },
 ];
 
-let quizContainer = document.getElementById("depressionQuiz");
-const submitButton = document.getElementById("depressionSubmit");
+let quizContainer = document.getElementById("showDepressionQuizContainer");
+
 
 // generateQuiz(questions, quizContainer, submitButton);
 showQuestions(questions, quizContainer);
@@ -129,8 +129,13 @@ function showQuestions(questions, quizContainer) {
     }
     quizContainer.innerHTML = output.join('');
     // finally combine our output list into one string of html and put it on the page
-    //quizContainer.innerHTML = output.join('');
+    quizContainer.innerHTML += '<div id="buttonContainer>"> <button' +
+        ' id="depressionSubmitBtn">Get Results</button></div>';
+    // quizContainer.innerHTML += '<button' +
+    //     ' id="depressionSubmitBtn">Get Results</button>';
 }
+
+const submitButton = document.getElementById("depressionSubmitBtn");
 
 function generateQuiz(questions, quizContainer, submitButton){
     showQuestions(questions, quizContainer);

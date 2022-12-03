@@ -20,8 +20,8 @@
 		<br>
 
 		<!--start of slideshow-->
-		<div class="slideshow">
-			<!--starting class to denote the slides-->
+		<div class="slideshow" id="personalSlideShow">
+<!--			starting class to denote the slides-->
 			<div class="slides ">
 				<p class="numText">1 / 10</p>
 				<img src="../pics/1.jpg" alt="Photo 1">
@@ -74,25 +74,26 @@
 
 			<!--buttons to go to the next or previous photo-->
 			<!--method nextSlide called with appropriate int parameter to got to next/prev slide-->
-			<a class="btn btn-prev" onclick="nxtSlide(-1)"><i class="fa fa-angle-left"></i></a>
-			<a class="btn btn-nxt" onclick="nxtSlide(1)"><i class="fa fa-angle-right"></i></a>
+			<a class="btn btn-prev" id = 'btn-prev'><i class="fa fa-angle-left"></i></a>
+			<a class="btn btn-nxt" id = 'btn-nxt'><i class="fa fa-angle-right"></i></a>
+
 		</div>
 
 		<!--placing dots below slideshow for users to click-->
 		<!--similar to next/prev buttons but with more range-->
 		<!--method currentSlide called to represent the current slide needed to be seen based on the dot clicked-->
 		<div class="div-dot">
-			<span class="dot" onclick="currentSlide(0)"></span>
-			<span class="dot" onclick="currentSlide(1)"></span>
-			<span class="dot" onclick="currentSlide(2)"></span>
-			<span class="dot" onclick="currentSlide(3)"></span>
-			<span class="dot" onclick="currentSlide(4)"></span>
-			<span class="dot" onclick="currentSlide(5)"></span>
-			<span class="dot" onclick="currentSlide(6)"></span>
-			<span class="dot" onclick="currentSlide(7)"></span>
-			<span class="dot" onclick="currentSlide(8)"></span>
-			<span class="dot" onclick="currentSlide(9)"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
 		</div>
 	</body>
-	<script type="text/javascript" src="../js/photography.js"></script>
+	<script type="module" src="../js/photography.js"></script>
 </html>

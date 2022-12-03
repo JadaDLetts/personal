@@ -18,7 +18,7 @@ let canPress=true;
 
 //function reset is used to reset the board when the game has ended or when the human player
 // wishes to start a new game regardless of whether the game has ended
-function reset() {
+const reset = () => {
     //resetting who won the game to zero
     winner = 0;
     //changes the variable representing whether start game was pressed or not to false
@@ -63,7 +63,7 @@ function reset() {
 }
 
 //function to start the tic tac toe game
-function startGame() {
+const startGame = () => {
     //if pressed is false set pressed to true and start game
     if (!gameStart) {
         console.log("game start");
@@ -111,7 +111,7 @@ function startGame() {
     }
 }
 
-function enemyTurn() {
+const enemyTurn = () => {
     //if it is not the players turn they do not have access
     // to the cursor style that shows they can press a cell for their turn
     // document.getElementById("t-board").style.pointerEvents = "none";
@@ -143,7 +143,7 @@ function enemyTurn() {
                 currentTurn = person;
         
                 //using set timeout so that after the computer makes a move it is not immediately the persons move
-                setTimeout(function () {
+                setTimeout(() =>{
                     playerTurn();
                 }, 2000);
             }
@@ -156,7 +156,7 @@ function enemyTurn() {
 }
 
 //function to allow a player to move during their turn
-function playerTurn() {
+const playerTurn = () => {
     //while it is the players turn
     //the player has access to the cursor style that shows they can press a cell for their turn
     //document.getElementById("t-board").style.pointerEvents = "auto";
@@ -178,7 +178,7 @@ function playerTurn() {
 }
 
 //helper function to execute the humans move once they have clicked on a cell
-function executeMove(num, turn) {
+const executeMove =(num, turn) => {
     //denotes the letter the computer will use in the game
     let letter = getTurnLetter(turn);
 
@@ -207,7 +207,7 @@ function executeMove(num, turn) {
 }
 
 //function to associate the letter X or O with the human/computer
-function getTurnLetter(turn) {
+const getTurnLetter = (turn) => {
     //if the turn of the computer is 1
     if (turn === 1) {
         //the letter associated with the computers turn is X
@@ -220,7 +220,7 @@ function getTurnLetter(turn) {
 }
 
 //checks the number of cells on the tic tac toe board that are filled.
-function checkCellsFilled() {
+const checkCellsFilled = () => {
     //retrieving all cells in the board that have the className tb
     let boards = document.getElementsByClassName("tb");
     //denotes the current number of cells filled
@@ -238,7 +238,7 @@ function checkCellsFilled() {
 }
 
 //function to determine whether the game has ended or not
-function checkEnd() {
+const checkEnd = () =>{
     //denotes the current number of cells filled
     let currCellsFilled = checkCellsFilled();
 
@@ -272,7 +272,7 @@ function checkEnd() {
 }
 
 //function to check who won the game before a tie occurred
-function checkWinner(c1, c2, c3) {
+const checkWinner = (c1, c2, c3) =>{
     //getting the text of the cells associated with the numbers passed in and represented by c1, c2, and c3
     let a = document.getElementById("b" + c1).innerText;
     let b = document.getElementById("b" + c2).innerText;

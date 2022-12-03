@@ -1,30 +1,34 @@
+.quizTitle{
+    text-align: center;
+}
 #depressionBody{
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     padding-bottom: 100px;
 }
-.quizTitle{
-    text-align: center;
-}#depressionQuiz{
-    margin-top: 20px;
-    width: 800px;
- }
+.depressionQuizContainer{
+    border: 2px solid lavender;
+    width: 50%;
+    margin: 20px auto auto;
+    padding: 15px 2% 0;
+    overflow: hidden;
+}
 .question{
     font-weight: 700;
-    font-size: larger;
+    font-size: 120%;
+    margin-bottom: 3px;
+}
+label{
+    display: block;
 }
  .answers{
      margin-bottom: 20px;
      margin-left:20px;
      font-size: large;
  }
- label{
-     display: block;
- }
- #depressionSubmit{
-     margin-right: 40px;
-     position: absolute;
-     right: 20px;
-     bottom: auto;
+ #depressionSubmitBtn{
+     float: right;
+     margin-bottom: 30px;
+     font-size: 140%;
 }
