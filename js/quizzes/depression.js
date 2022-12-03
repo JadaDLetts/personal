@@ -98,4 +98,40 @@ const questions = [
             4: 'Extremely difficult'
         }
     },
-]
+];
+
+let quizContainer = document.getElementById("depressionQuiz");
+const submitButton = document.getElementById("depressionSubmit");
+
+// generateQuiz(questions, quizContainer, submitButton);
+showQuestions(questions, quizContainer);
+
+
+function showQuestions(questions, quizContainer) {
+    let output = [];
+    for (let i = 0; i < questions.length; i++) {
+        let answers = [];
+       // quizContainer.innerHTML += '<div class="question">' + questions[i].question + '</div>';
+        for(let number in questions[i].answers){
+            answers.push(
+                '<label>' +
+                '<input type="radio" name="question' + i + '" value="' + number + '"> ' +
+                  questions[i].answers[number] +
+                '</label>'
+            )
+        }
+        
+        // add this question and its answers to the output
+         output.push(
+             '<div class="question">' + questions[i].question + '</div>'
+             + '<div class="answers">' + answers.join('') + '</div>'
+         );
+    }
+    quizContainer.innerHTML = output.join('');
+    // finally combine our output list into one string of html and put it on the page
+    //quizContainer.innerHTML = output.join('');
+}
+
+function generateQuiz(questions, quizContainer, submitButton){
+    showQuestions(questions, quizContainer);
+}
